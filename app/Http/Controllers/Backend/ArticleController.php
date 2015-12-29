@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Article;
+use App\Section;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -34,7 +35,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.article.create');
+        $section_list = Section::lists('id', 'title');
+
+        return view('backend.pages.article.create', compact('section_list'));
     }
 
     /**
@@ -69,7 +72,9 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('backend.pages.article.edit', compact('article'));
+        $section_list = Section::lists('id', 'title');
+
+        return view('backend.pages.article.edit', compact('article', 'section_list'));
     }
 
     /**

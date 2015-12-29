@@ -21,7 +21,7 @@
                         <th>{{ trans('section.fields.title') }}</th>
                         <th>{{ trans('section.fields.slug') }}</th>
                         <th>{{ trans('section.fields.order') }}</th>
-                        <th>{{ trans('section.fields.updated_at') }}</th>
+                        <th>{{ trans('common.updated_at') }}</th>
                         <th>{{ trans('common.options') }}</th>
                     </tr>
                     </thead>

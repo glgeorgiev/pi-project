@@ -5,11 +5,11 @@
         <section class="panel">
             <header class="panel-heading">
                 <h3 class="pull-left">
-                    {{ trans('section.index') }}
+                    {{ trans('tag.index') }}
                 </h3>
                 <a class="pull-right btn btn-success"
-                    href="{{ route('admin.section.create') }}">
-                    {{ trans('section.create') }}
+                    href="{{ route('admin.tag.create') }}">
+                    {{ trans('tag.create') }}
                 </a>
                 <div class="clearfix"></div>
             </header>
@@ -18,9 +18,9 @@
                     <thead>
                     <tr>
                         <th>{{ trans('common.id') }}</th>
-                        <th>{{ trans('section.tag.title') }}</th>
-                        <th>{{ trans('section.tag.slug') }}</th>
-                        <th>{{ trans('section.tag.updated_at') }}</th>
+                        <th>{{ trans('tag.tag.title') }}</th>
+                        <th>{{ trans('tag.fields.slug') }}</th>
+                        <th>{{ trans('common.updated_at') }}</th>
                         <th>{{ trans('common.options') }}</th>
                     </tr>
                     </thead>

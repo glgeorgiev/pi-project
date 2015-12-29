@@ -6,7 +6,7 @@ class Article extends Model
 {
     protected $table = 'articles';
 
-    protected $fillable = ['title', 'description', 'content', 'section_id'];
+    protected $fillable = ['title', 'slug', 'description', 'content', 'section_id'];
 
     public function section()
     {
