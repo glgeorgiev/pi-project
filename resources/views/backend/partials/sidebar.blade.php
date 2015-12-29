@@ -3,11 +3,11 @@
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a href="#"
-                        @if(Request::segment(2) == 'sdaasdasdasd')
+                    <a href="{{ route('admin.section.index') }}"
+                        @if(Request::segment(2) == 'section')
                             class="active"
                         @endif>
-                        TITLE
+                        {!! trans('sidebar.section') !!}
                     </a>
                 </li>
             </ul>

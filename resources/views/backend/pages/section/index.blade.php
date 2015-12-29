@@ -49,7 +49,8 @@
                                 {!! Form::model($section,
                                     ['url' => route('admin.section.destroy',
                                     ['section' => $section]),
-                                    'method' => 'DELETE']) !!}
+                                    'method' => 'DELETE',
+                                    'class' => 'inline-form']) !!}
                                     {!! Form::button('<i class="fa fa-trash-o"></i>',
                                         ['class' => 'btn btn-sm btn-danger',
                                         'type' => 'submit']) !!}
