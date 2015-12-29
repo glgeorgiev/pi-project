@@ -8,6 +8,11 @@ class Image extends Model
 
     protected $fillable = ['title', 'ext'];
 
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+
     public function sections()
     {
         return $this->hasMany(Section::class);

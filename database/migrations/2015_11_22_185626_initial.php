@@ -91,9 +91,12 @@ class Initial extends Migration
             $table->integer('likes')->unsigned();
             $table->integer('dislikes')->unsigned();
             $table->integer('section_id')->unsigned();
+            $table->integer('image_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('section_id')->references('id')->on('sections')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('image_id')->references('id')->on('images')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
 

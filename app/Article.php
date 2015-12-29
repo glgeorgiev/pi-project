@@ -13,6 +13,11 @@ class Article extends Model
         return $this->belongsTo(Section::class);
     }
 
+    public function image()
+    {
+        return $this->belongsTo(Image::class);
+    }
+
     public function tags()
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();
