@@ -5,7 +5,7 @@
         {!! Form::open(['method' => 'POST']) !!}
         {!! Form::hidden('remember', '1') !!}
 
-        @include('partials.errors')
+        @include('backend.partials.errors')
 
         <div class="form-group">
             {!! Form::email('email', null,
