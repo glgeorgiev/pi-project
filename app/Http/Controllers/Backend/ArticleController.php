@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Article;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -9,6 +10,11 @@ use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
+    public function __construct()
+    {
+        $this->redirectRoute = 'admin.article.index';
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $articles = Article::ordered()->paginate(config('constants.per_page'));
+
+        return view('backend.pages.article.index', compact('articles'));
     }
 
     /**
@@ -26,7 +34,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.article.create');
     }
 
     /**
@@ -37,51 +45,57 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Article::create($request->all());
+
+        return $this->redirect();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Article $article
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        //
+        return view('backend.pages.article.show', compact('article'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Article $article
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        //
+        return view('backend.pages.article.edit', compact('article'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Article $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Article $article)
     {
-        //
+        $article->update($request->all());
+
+        return $this->redirect();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Article $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+        return $this->redirect();
     }
 }

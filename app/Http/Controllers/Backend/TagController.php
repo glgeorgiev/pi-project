@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Tag;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -9,6 +10,11 @@ use App\Http\Controllers\Controller;
 
 class TagController extends Controller
 {
+    public function __construct()
+    {
+        $this->redirectRoute = 'admin.tag.index';
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::ordered()->paginate(config('constants.per_page'));
+
+        return view('backend.pages.tag.index', compact('tags'));
     }
 
     /**
@@ -26,7 +34,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.tag.create');
     }
 
     /**
@@ -37,51 +45,57 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Tag::create($request->all());
+
+        return $this->redirect();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Tag $tag
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Tag $tag)
     {
-        //
+        return view('backend.pages.tag.show', compact('tag'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Tag $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tag $tag)
     {
-        //
+        return view('backend.pages.tag.edit', compact('tag'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Tag $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Tag $tag)
     {
-        //
+        $tag->update($request->all());
+
+        return $this->redirect();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Tag $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+
+        return $this->redirect();
     }
 }

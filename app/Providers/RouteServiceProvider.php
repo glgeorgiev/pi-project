@@ -25,8 +25,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        $router->model('ban_email', \App\BanEmail::class);
         $router->model('ban_ip',    \App\BanIp::class);
+        $router->model('ban_user',  \App\BanUser::class);
         $router->model('comment',   \App\Comment::class);
         $router->model('image',     \App\Image::class);
         $router->model('menu',      \App\Menu::class);

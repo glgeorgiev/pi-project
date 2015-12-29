@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Section;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -9,6 +10,11 @@ use App\Http\Controllers\Controller;
 
 class SectionController extends Controller
 {
+    public function __construct()
+    {
+        $this->redirectRoute = 'admin.section.index';
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,9 @@ class SectionController extends Controller
      */
     public function index()
     {
-        //
+        $sections = Section::order()->paginate(config('constants.per_page'));
+
+        return view('backend.pages.section.index', compact('sections'));
     }
 
     /**
@@ -26,7 +34,7 @@ class SectionController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.section.create');
     }
 
     /**
@@ -37,51 +45,57 @@ class SectionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Section::create($request->all());
+
+        return $this->redirect();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Section $section
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Section $section)
     {
-        //
+        return view('backend.pages.section.show', compact('section'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Section $section
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Section $section)
     {
-        //
+        return view('backend.pages.section.edit', compact('section'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Section $section
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Section $section)
     {
-        //
+        $section->update($request->all());
+
+        return $this->redirect();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Section $section
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Section $section)
     {
-        //
+        $section->delete();
+
+        return $this->redirect();
     }
 }
