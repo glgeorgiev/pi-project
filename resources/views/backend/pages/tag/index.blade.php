@@ -18,7 +18,7 @@
                     <thead>
                     <tr>
                         <th>{{ trans('common.id') }}</th>
-                        <th>{{ trans('tag.tag.title') }}</th>
+                        <th>{{ trans('tag.fields.title') }}</th>
                         <th>{{ trans('tag.fields.slug') }}</th>
                         <th>{{ trans('common.updated_at') }}</th>
                         <th>{{ trans('common.options') }}</th>
