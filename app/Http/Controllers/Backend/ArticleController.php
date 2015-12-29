@@ -48,7 +48,9 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        Article::create($request->all());
+        $article = Article::create($request->all());
+
+        $article->saveTags(explode(',', $request->input('tag_list')));
 
         return $this->redirect();
     }
@@ -87,6 +89,8 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article)
     {
         $article->update($request->all());
+
+        $article->saveTags(explode(',', $request->input('tag_list')));
 
         return $this->redirect();
     }

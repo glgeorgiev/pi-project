@@ -6,7 +6,12 @@ class Article extends Model
 {
     protected $table = 'articles';
 
-    protected $fillable = ['title', 'slug', 'description', 'content', 'section_id'];
+    protected $fillable = ['title', 'slug', 'description', 'content', 'section_id', 'image_id'];
+
+    public function getTagListAttribute()
+    {
+        return implode(',', $this->tags->lists('title')->toArray());
+    }
 
     public function section()
     {
@@ -26,5 +31,28 @@ class Article extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    /**
+     * By given array of tags, find or create them
+     * and add relationship with the article
+     * @param array $tag_titles
+     * @return void
+     */
+    public function saveTags(array $tag_titles)
+    {
+        $tag_ids = [];
+        foreach ($tag_titles as $tag_title) {
+            $tag_slug = slugify($tag_title);
+            $tag = Tag::where('slug', $tag_slug)->first();
+            if (is_null($tag)) {
+                $tag = Tag::create([
+                    'title' => $tag_title,
+                    'slug'  => $tag_slug,
+                ]);
+            }
+            $tag_ids[] = $tag->id;
+        }
+        $this->tags()->sync($tag_ids);
     }
 }
