@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    @include('partials.head')
+    @include('backend.partials.head')
 </head>
 <body>
 <section id="container">
-    @include ('partials.header')
+    @include ('backend.partials.header')
 
-    @include ('partials.sidebar')
+    @include ('backend.partials.sidebar')
 
     <div id="main-content">
         <section class="wrapper">
@@ -16,6 +16,6 @@
     </div>
 </section>
 
-@include('partials.bottom')
+@include('backend.partials.bottom')
 </body>
 </html>
