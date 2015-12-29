@@ -26,6 +26,14 @@
                         {!! trans('sidebar.tag') !!}
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.menu.index') }}"
+                       @if(Request::segment(2) == 'menu')
+                       class="active"
+                            @endif>
+                        {!! trans('sidebar.menu') !!}
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
