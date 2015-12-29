@@ -36,19 +36,19 @@
                             <td>
                                 <a class="btn btn-sm btn-info"
                                     href="{{ route('admin.section.show',
-                                    ['section' => $section]) }}">
+                                    ['section' => $section->slug]) }}">
                                     <i class="fa fa-eye"></i>
                                 </a>
 
                                 <a class="btn btn-sm btn-warning"
                                     href="{{ route('admin.section.edit',
-                                    ['section' => $section]) }}">
+                                    ['section' => $section->slug]) }}">
                                     <i class="fa fa-edit"></i>
                                 </a>
 
                                 {!! Form::model($section,
                                     ['url' => route('admin.section.destroy',
-                                    ['section' => $section]),
+                                    ['section' => $section->slug]),
                                     'method' => 'DELETE',
                                     'class' => 'inline-form']) !!}
                                     {!! Form::button('<i class="fa fa-trash-o"></i>',
