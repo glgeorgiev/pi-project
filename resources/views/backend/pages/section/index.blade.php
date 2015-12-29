@@ -4,13 +4,14 @@
     <div class="row-fluid">
         <section class="panel">
             <header class="panel-heading">
-                <h1 class="pull-left">
+                <h3 class="pull-left">
                     {{ trans('section.index') }}
-                </h1>
+                </h3>
                 <a class="pull-right btn btn-success"
                     href="{{ route('admin.section.create') }}">
                     {{ trans('section.create') }}
                 </a>
+                <div class="clearfix"></div>
             </header>
             <div class="panel-body">
                 <table class="table table-hover">
