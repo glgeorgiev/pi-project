@@ -1,0 +1,15 @@
+.inline-form {
+    display: inline-block;
+}
+.sm-image {
+    max-width: 32px;
+    max-height: 18px;
+}
+.md-image {
+    max-width: 160px;
+    max-height: 90px;
+}
+.lg-image {
+    max-width: 640px;
+    max-height: 360px;
+}

@@ -130,11 +130,14 @@ class Initial extends Migration
             $table->timestamps();
         });
 
-        Schema::create('ban_emails', function(Blueprint $table) {
+        Schema::create('ban_users', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('email');
+            $table->integer('user_id')->unsigned();
             $table->timestamp('until')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
 
         Schema::create('ban_ips', function(Blueprint $table) {
@@ -153,7 +156,7 @@ class Initial extends Migration
     public function down()
     {
         Schema::drop('ban_ips');
-        Schema::drop('ban_emails');
+        Schema::drop('ban_users');
         Schema::drop('menus');
         Schema::drop('comments');
         Schema::drop('article_tag');

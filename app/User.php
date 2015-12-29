@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DateTime;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -9,6 +10,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Request;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -36,4 +38,34 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function isBanned()
+    {
+        $now = new DateTime();
+
+        $banned = BanUser::where('user_id', $this->getAttribute('id'))->where(function($q) use($now) {
+            $q->whereNull('until')
+                ->orWhere('until', '>', $now);
+        })->first();
+
+        if ($banned instanceof BanUser) {
+            return true;
+        }
+
+        $banned = BanIp::where('ip', Request::getClientIp())->where(function($q) use($now) {
+            $q->whereNull('until')
+                ->orWhere('until', '>', $now);
+        })->first();
+
+        if ($banned instanceof BanUser) {
+            return true;
+        }
+
+        return false;
+    }
 }
