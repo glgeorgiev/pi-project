@@ -43,6 +43,11 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany(Comment::class);
     }
 
+    public function isAdmin()
+    {
+        return $this->is_admin ? true : false;
+    }
+
     public function isBanned()
     {
         $now = new DateTime();

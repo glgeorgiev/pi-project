@@ -36,7 +36,8 @@ class CheckAdmin
         if ($this->auth->guest()) {
             return redirect()->route('index');
         }
-        if (! $this->auth->user()->isAdmin) {
+
+        if (! $this->auth->user()->isAdmin()) {
             return redirect()->route('index');
         }
 
