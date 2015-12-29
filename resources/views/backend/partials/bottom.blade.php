@@ -7,5 +7,6 @@
 
 {!! HTML::script('assets/js/fileinput.js') !!}
 {!! HTML::script('assets/js/jquery.nicescroll.js') !!}
+{!! HTML::script('assets/js/jquery.tagsinput.min.js') !!}
 {!! HTML::script('assets/js/scripts.js') !!}
 {!! HTML::script('assets/js/custom.js') !!}

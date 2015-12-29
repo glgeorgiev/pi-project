@@ -29,6 +29,12 @@
     ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group">
+    {!! Form::text('tag_list', null,
+    ['class' => 'form-control',
+    'placeholder' => trans('article.fields.tags')]) !!}
+</div>
+
 @if(isset($article))
     <div class="form-group">
         {!! Form::submit(trans('article.edit'),
@@ -40,3 +46,15 @@
         ['class' => 'btn btn-success col-sm-12']) !!}
     </div>
 @endif
+
+@section('footer_script')
+    <script>
+        jQuery(function($) {
+            $(':input[name=tag_list]').tagsInput({
+                width:'auto',
+                defaultText: '{{ trans('article.field.tags') }}',
+                minChars: 2
+            });
+        });
+    </script>
+@endsection

@@ -12,6 +12,7 @@
 {!! HTML::style('http://code.jquery.com/ui/1.11.3/themes/redmond/jquery-ui.css') !!}
 
 {!! HTML::style('assets/css/fileinput.css') !!}
+{!! HTML::style('assets/css/jquery.tagsinput.css') !!}
 {!! HTML::style('assets/css/style.css') !!}
 {!! HTML::style('assets/css/style-responsive.css') !!}
 {!! HTML::style('assets/css/custom.css') !!}
