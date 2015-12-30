@@ -53,8 +53,8 @@ jQuery(function($) {
             url: $form.attr('action'),
             type: 'GET',
             data: $form.serialize(),
-            success: function(data) {
-                console.log(data);
+            success: function(html) {
+                $('#select-image-results').html(html);
             },
             error: function() {
                 alert('There was an error');
