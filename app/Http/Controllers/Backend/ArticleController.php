@@ -23,7 +23,11 @@ class ArticleController extends Controller
     {
         $articles = Article::getFilteredResults();
 
-        return view('backend.pages.article.index', compact('articles'));
+        $section_list = Section::lists('title', 'id');
+
+        $section_list->prepend(trans('common.all_sections'), '');
+
+        return view('backend.pages.article.index', compact('articles', 'section_list'));
     }
 
     /**

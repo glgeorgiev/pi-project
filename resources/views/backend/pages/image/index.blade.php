@@ -14,6 +14,7 @@
                 <div class="clearfix"></div>
             </header>
             <div class="panel-body">
+                @include('backend.pages.image._filter')
                 <div class="col-sm-12">
                     @foreach($images as $image)
                         <div class="thumbnail col-sm-3">
