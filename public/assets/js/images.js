@@ -33,6 +33,7 @@ jQuery(function($) {
                 }
                 $(':input[name="image_id"]').val(data.image_id);
                 $('.selected-image').find('img').attr('src', data.image_url);
+                $('#uploadImageModal').trigger('modal.bs.hide');
             },
             error: function() {
                 alert('There was an error');

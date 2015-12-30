@@ -33,7 +33,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $section_list = Section::lists('id', 'title');
+        $section_list = Section::lists('title', 'id');
 
         return view('backend.pages.article.create', compact('section_list'));
     }
@@ -72,7 +72,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        $section_list = Section::lists('id', 'title');
+        $section_list = Section::lists('title', 'id');
 
         return view('backend.pages.article.edit', compact('article', 'section_list'));
     }
