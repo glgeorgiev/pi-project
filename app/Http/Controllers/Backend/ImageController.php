@@ -43,7 +43,17 @@ class ImageController extends Controller
      */
     public function store(ImageRequest $request)
     {
-        Image::create($request->all());
+        $image = Image::create($request->all());
+
+        if ($request->ajax()) {
+            return response()->json([
+                'result'        => 'OK',
+                'message'       => 'Created an image',
+                'image_id'      => $image->id,
+                'image_title'   => $image->title,
+                'image_url'     => $image->url,
+            ]);
+        }
 
         return $this->redirect();
     }
