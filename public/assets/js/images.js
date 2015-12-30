@@ -65,4 +65,18 @@ jQuery(function($) {
     $('a[href="#selectImageModal"]').on('click', function() {
         $('#select-image-form-submit-btn').trigger('click');
     });
+
+    $('#select-image-results').on('click', '.option', function() {
+        var $this = $(this);
+        if ($this.hasClass('selected')) {
+            $this.removeClass('selected');
+            $(':input[name="image_id"]').val('');
+            $('.selected-image').find('img').attr('src', '/assets/img/no-image.png');
+        } else {
+            $('#select-image-results').find('.selected').removeClass('selected');
+            $this.addClass('selected');
+            $(':input[name="image_id"]').val($this.attr('data-image_id'));
+            $('.selected-image').find('img').attr('src', $this.find('img').attr('src'));
+        }
+    });
 });

@@ -16,3 +16,11 @@
 #main-content .panel > .panel-heading > h3 {
     margin: 4px 0px;
 }
+#select-image-results .option {
+    cursor: pointer;
+}
+
+#select-image-results .selected {
+    background-color: #AAA;
+    border: 1px solid #444;
+}
