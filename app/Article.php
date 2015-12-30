@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Request;
+
 class Article extends Model
 {
     protected $table = 'articles';
@@ -54,5 +56,22 @@ class Article extends Model
             $tag_ids[] = $tag->id;
         }
         $this->tags()->sync($tag_ids);
+    }
+
+    public static function getFilteredResults()
+    {
+        $query = static::ordered();
+
+        if (Request::has('id')) {
+            $query = $query->where('id', Request::input('id'));
+        }
+        if (Request::has('title')) {
+            $query = $query->where('title', 'like','%' . Request::input('title') . '%');
+        }
+        if (Request::has('section_id')) {
+            $query = $query->where('section_id', Request::input('section_id'));
+        }
+
+        return $query->paginate(config('constants.per_page'));
     }
 }

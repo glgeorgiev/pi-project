@@ -20,7 +20,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::ordered()->paginate(config('constants.per_page'));
+        $tags = Tag::getFilteredResults();
 
         return view('backend.pages.tag.index', compact('tags'));
     }

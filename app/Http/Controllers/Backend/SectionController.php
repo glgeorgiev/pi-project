@@ -20,7 +20,7 @@ class SectionController extends Controller
      */
     public function index()
     {
-        $sections = Section::order()->paginate(config('constants.per_page'));
+        $sections = Section::getFilteredResults();
 
         return view('backend.pages.section.index', compact('sections'));
     }

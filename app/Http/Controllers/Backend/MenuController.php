@@ -20,7 +20,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::order()->paginate(config('constants.per_page'));
+        $menus = Menu::getFilteredResults();
 
         return view('backend.pages.menu.index', compact('menus'));
     }

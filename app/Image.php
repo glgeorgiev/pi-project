@@ -36,7 +36,7 @@ class Image extends Model
             $query = $query->where('id', Request::input('id'));
         }
         if (Request::has('title')) {
-            $query = $query->where('title', 'like', Request::input('title'));
+            $query = $query->where('title', 'like','%' . Request::input('title') . '%');
         }
 
         return $query->paginate(config('constants.per_page'));

@@ -21,7 +21,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::ordered()->paginate(config('constants.per_page'));
+        $articles = Article::getFilteredResults();
 
         return view('backend.pages.article.index', compact('articles'));
     }
