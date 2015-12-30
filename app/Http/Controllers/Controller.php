@@ -15,6 +15,9 @@ abstract class Controller extends BaseController
 
     public function redirect()
     {
+        if (request()->ajax()) {
+            return response()->json(['result' => 'OK']);
+        }
         return redirect()->route($this->redirectRoute);
     }
 }

@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use App\Image;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ImageRequest;
 
 class ImageController extends Controller
 {
+    public function __construct()
+    {
+        $this->redirectRoute = 'admin.image.index';
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +20,9 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $images = Image::order()->paginate(config('constants.per_page'));
+
+        return view('backend.pages.image.index', compact('images'));
     }
 
     /**
@@ -26,62 +32,68 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.image.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  ImageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ImageRequest $request)
     {
-        //
+        Image::create($request->all());
+
+        return $this->redirect();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Image $image
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Image $image)
     {
-        //
+        return view('backend.pages.image.show', compact('image'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Image $image
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Image $image)
     {
-        //
+        return view('backend.pages.image.edit', compact('image'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  ImageRequest  $request
+     * @param  Image $image
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ImageRequest $request, Image $image)
     {
-        //
+        $image->update($request->all());
+
+        return $this->redirect();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Image $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Image $image)
     {
-        //
+        $image->delete();
+
+        return $this->redirect();
     }
 }

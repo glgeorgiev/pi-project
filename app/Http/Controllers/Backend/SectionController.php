@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Section;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SectionRequest;
 
 class SectionController extends Controller
 {
@@ -40,10 +38,10 @@ class SectionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  SectionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SectionRequest $request)
     {
         Section::create($request->all());
 
@@ -75,11 +73,11 @@ class SectionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  SectionRequest  $request
      * @param  Section $section
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Section $section)
+    public function update(SectionRequest $request, Section $section)
     {
         $section->update($request->all());
 
