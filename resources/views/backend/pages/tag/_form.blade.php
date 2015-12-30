@@ -32,29 +32,7 @@
     @endif
 </div>
 <div class="col-sm-3 well">
-    <div class="form-group">
-        <a href="#selectImageModal" data-toggle="modal" class="btn btn-info col-sm-12">
-            {{ trans('common.select_image') }}
-        </a>
-        <div class="clearfix"></div>
-    </div>
-    <div class="form-group">
-        <a href="#uploadImageModal" data-toggle="modal" class="btn btn-info col-sm-12">
-            {{ trans('common.upload_image') }}
-        </a>
-        <div class="clearfix"></div>
-    </div>
-    <div class="form-group">
-        <div class="thumbnail col-sm-12 selected-image">
-            @if(isset($tag) && $tag->image)
-                {!! HTML::image($tag->image->url, 'selected image') !!}
-            @else
-                {!! HTML::image('assets/img/no-image.png', 'selected image') !!}
-            @endif
-        </div>
-        <div class="clearfix"></div>
-    </div>
-    {!! Form::hidden('image_id', isset($tag) ? $tag->image_id : null) !!}
+    @include('backend.partials.right_form', isset($tag) ? ['record' => $tag] : [])
 </div>
 
 @section('footer_script')

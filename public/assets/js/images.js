@@ -86,4 +86,9 @@ jQuery(function($) {
             $('.selected-image').find('img').attr('src', $this.find('img').attr('src'));
         }
     });
+
+    $('#remove-selected-image').on('click', function() {
+        $(':input[name="image_id"]').val('');
+        $('.selected-image').find('img').attr('src', '/assets/img/no-image.png');
+    });
 });
