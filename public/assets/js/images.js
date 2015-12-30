@@ -9,11 +9,10 @@ jQuery(function($) {
     $('#upload-image-form').on('submit', function(e) {
         e.preventDefault();
         var $this = $(this);
-        var formData = new FormData(this);
         $.ajax({
             url: $this.attr('action'),
             type: 'POST',
-            data: formData,
+            data: $this.serialize(),
             xhr: function() {
                 var myXhr = $.ajaxSettings.xhr();
                 if(myXhr.upload){
@@ -46,11 +45,10 @@ jQuery(function($) {
 
     $('#select-image-form-submit-btn').on('click', function() {
         var $form = $('#select-image-form');
-        var formData = new FormData($form.get(0));
         $.ajax({
             url: $form.attr('action'),
             type: 'GET',
-            data: formData,
+            data: $form.serialize(),
             success: function(data) {
                 console.log(data);
             },
