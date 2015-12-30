@@ -62,3 +62,7 @@
     </div>
     {!! Form::hidden('image_id', isset($section) ? $section->image_id : null) !!}
 </div>
+
+@section('footer_script')
+    {!! HTML::script('assets/js/images.js') !!}
+@endsection

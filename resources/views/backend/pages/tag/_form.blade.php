@@ -56,3 +56,7 @@
     </div>
     {!! Form::hidden('image_id', isset($tag) ? $tag->image_id : null) !!}
 </div>
+
+@section('footer_script')
+    {!! HTML::script('assets/js/images.js') !!}
+@endsection

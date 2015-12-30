@@ -75,6 +75,7 @@
 </div>
 
 @section('footer_script')
+    {!! HTML::script('assets/js/images.js') !!}
     <script>
         jQuery(function($) {
             $(':input[name=tag_list]').tagsInput({
