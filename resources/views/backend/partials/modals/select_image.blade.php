@@ -7,7 +7,7 @@
                 <h4 class="modal-title">{{ trans('common.modal.select_image') }}</h4>
             </div>
             <div class="modal-body">
-                <div class="row">
+                <div class="col-sm-12">
                     {!! Form::open(['method' => 'get', 'id' => 'ajax-search-image-form',
                         'url' => route('admin.image.index')]) !!}
                         <div class="form-group">
