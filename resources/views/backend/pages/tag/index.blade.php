@@ -14,6 +14,7 @@
                 <div class="clearfix"></div>
             </header>
             <div class="panel-body">
+                @include('backend.pages.tag._filter')
                 <table class="table table-hover">
                     <thead>
                     <tr>
