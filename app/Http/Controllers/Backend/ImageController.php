@@ -20,7 +20,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images = Image::ordered()->paginate(config('constants.per_page'));
+        $images = Image::getFilteredResults();
 
         if (request()->ajax()) {
             return view('backend.pages.image._search_results', compact('images'));
