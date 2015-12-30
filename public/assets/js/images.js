@@ -9,10 +9,11 @@ jQuery(function($) {
     $('#upload-image-form').on('submit', function(e) {
         e.preventDefault();
         var $this = $(this);
+        var formData = new FormData(this);
         $.ajax({
             url: $this.attr('action'),
             type: 'POST',
-            data: $this.serialize(),
+            data: formData,
             xhr: function() {
                 var myXhr = $.ajaxSettings.xhr();
                 if(myXhr.upload){
