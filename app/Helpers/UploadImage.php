@@ -31,7 +31,7 @@ trait UploadImage
 
     public static function boot()
     {
-        self::creating(function($model) {
+        self::created(function($model) {
             $model->uploadFile();
         });
         self::deleting(function($model) {
@@ -47,6 +47,7 @@ trait UploadImage
         }
         $this->ext = $file->getClientOriginalExtension();
         $file->move($this->getFilePath(), $this->getFileName());
+        $this->save();
     }
 
     protected function deleteFile()
