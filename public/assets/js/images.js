@@ -39,7 +39,10 @@ jQuery(function($) {
             },
             error: function() {
                 alert('There was an error');
-            }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
         });
     });
 
