@@ -2,8 +2,12 @@
 
 namespace App;
 
+use App\Helpers\UploadImage;
+
 class Image extends Model
 {
+    use UploadImage;
+
     protected $table = 'images';
 
     protected $fillable = ['title', 'ext'];

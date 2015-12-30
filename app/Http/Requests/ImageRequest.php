@@ -23,6 +23,7 @@ class ImageRequest extends Request
     {
         return [
             'title'     => 'required|max:255',
+            'file'      => 'required|image',
         ];
     }
 }
