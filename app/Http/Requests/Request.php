@@ -12,8 +12,10 @@ abstract class Request extends FormRequest
 
     public function __construct()
     {
-        if ($this->route()->hasParameter($this->modelName)) {
-            $this->idOrEmpty = ',' . $this->route()->getParameter($this->modelName)->id;
+        $param = $this->route($this->modelName);
+
+        if (! is_null($param)) {
+            $this->idOrEmpty = ',' . $param->id;
         }
 
         call_user_func_array(['parent', __FUNCTION__], func_get_args());

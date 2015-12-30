@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 class ImageRequest extends Request
 {
+    protected $modelName = 'image';
+
     /**
      * Determine if the user is authorized to make this request.
      *
