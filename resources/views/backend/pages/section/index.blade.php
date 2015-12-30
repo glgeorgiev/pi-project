@@ -60,6 +60,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                {!! $sections->appends(Request::all())->render() !!}
             </div>
         </section>
     </div>

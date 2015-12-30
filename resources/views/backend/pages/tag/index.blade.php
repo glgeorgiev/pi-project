@@ -58,6 +58,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                {!! $tags->appends(Request::all())->render() !!}
             </div>
         </section>
     </div>

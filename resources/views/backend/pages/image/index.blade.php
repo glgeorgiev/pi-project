@@ -45,6 +45,7 @@
                         </div>
                     @endforeach
                 </div>
+                {!! $images->appends(Request::all())->render() !!}
             </div>
         </section>
     </div>
