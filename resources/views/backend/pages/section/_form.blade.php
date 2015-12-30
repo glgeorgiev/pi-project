@@ -39,13 +39,13 @@
 </div>
 <div class="col-sm-3 well">
     <div class="form-group">
-        <a href="#selectImageModal" class="btn btn-info col-sm-12">
+        <a href="#selectImageModal" data-toggle="modal" class="btn btn-info col-sm-12">
             {{ trans('common.select_image') }}
         </a>
         <div class="clearfix"></div>
     </div>
     <div class="form-group">
-        <a href="#uploadImageModal" class="btn btn-info col-sm-12">
+        <a href="#uploadImageModal" data-toggle="modal" class="btn btn-info col-sm-12">
             {{ trans('common.upload_image') }}
         </a>
         <div class="clearfix"></div>
