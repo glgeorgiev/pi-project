@@ -48,15 +48,21 @@
         </div>
     @endif
 </div>
-<div class="col-sm-3">
-    <a href="#" class="btn btn-default col-sm-12">
-        {{ trans('common.select_image') }}
-    </a>
-    <a href="#" class="btn btn-default col-sm-12">
-        {{ trans('common.upload_image') }}
-    </a>
-    <div class="thumbnail col-sm-12">
-        {!! HTML::image('http://pioneerinstitute.org/wp-content/uploads/Test-keyboard.jpg') !!}
+<div class="col-sm-3 well">
+    <div class="form-group">
+        <a href="#" class="btn btn-default col-sm-12">
+            {{ trans('common.select_image') }}
+        </a>
+    </div>
+    <div class="form-group">
+        <a href="#" class="btn btn-default col-sm-12">
+            {{ trans('common.upload_image') }}
+        </a>
+    </div>
+    <div class="form-group">
+        <div class="thumbnail col-sm-12">
+            {!! HTML::image('http://pioneerinstitute.org/wp-content/uploads/Test-keyboard.jpg') !!}
+        </div>
     </div>
 </div>
 
