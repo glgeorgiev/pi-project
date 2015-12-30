@@ -25,8 +25,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::resource('ban_email',    'Backend\BanEmailController',   ['except'   => ['show', 'edit', 'update']]);
     Route::resource('ban_ip',       'Backend\BanIpController',      ['except'   => ['show', 'edit', 'update']]);
     Route::resource('comment',      'Backend\CommentController',    ['only'     => ['index', 'update', 'destroy']]);
-    Route::resource('image',        'Backend\ImageController',      ['except'   => ['show']]);
-    Route::resource('menu',         'Backend\MenuController',       ['except'   => ['show']]);
+    Route::resource('image',        'Backend\ImageController');
+    Route::resource('menu',         'Backend\MenuController');
     Route::resource('poll',         'Backend\PollController');
     Route::resource('section',      'Backend\SectionController');
     Route::resource('tag',          'Backend\TagController');
