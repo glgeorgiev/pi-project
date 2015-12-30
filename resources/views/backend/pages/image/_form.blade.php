@@ -7,7 +7,7 @@
 </div>
 
 @if(isset($image))
-    <div class="form-group thumbnail col-sm-3">
+    <div class="form-group thumbnail col-sm-6">
         {!! HTML::image($image->url, $image->title) !!}
     </div>
 

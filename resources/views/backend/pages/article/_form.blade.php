@@ -1,51 +1,64 @@
-@include('backend.partials.errors')
+<div class="col-sm-9">
+    @include('backend.partials.errors')
 
-<div class="form-group">
-    {!! Form::text('title', null,
-    ['class' => 'form-control',
-    'placeholder' => trans('article.fields.title')]) !!}
-</div>
-
-<div class="form-group">
-    {!! Form::text('slug', null,
-    ['class' => 'form-control',
-    'placeholder' => trans('article.fields.slug')]) !!}
-</div>
-
-<div class="form-group">
-    {!! Form::textarea('description', null,
-    ['class' => 'form-control', 'rows' => '5',
-    'placeholder' => trans('article.fields.description')]) !!}
-</div>
-
-<div class="form-group">
-    {!! Form::textarea('content', null,
-    ['class' => 'form-control', 'rows' => '10',
-    'placeholder' => trans('article.fields.content')]) !!}
-</div>
-
-<div class="form-group">
-    {!! Form::select('section_id', $section_list, null,
-    ['class' => 'form-control']) !!}
-</div>
-
-<div class="form-group">
-    {!! Form::text('tag_list', null,
-    ['class' => 'form-control',
-    'placeholder' => trans('article.fields.tags')]) !!}
-</div>
-
-@if(isset($article))
     <div class="form-group">
-        {!! Form::submit(trans('article.edit'),
-        ['class' => 'btn btn-warning col-sm-12']) !!}
+        {!! Form::text('title', null,
+        ['class' => 'form-control',
+        'placeholder' => trans('article.fields.title')]) !!}
     </div>
-@else
+
     <div class="form-group">
-        {!! Form::submit(trans('article.create'),
-        ['class' => 'btn btn-success col-sm-12']) !!}
+        {!! Form::text('slug', null,
+        ['class' => 'form-control',
+        'placeholder' => trans('article.fields.slug')]) !!}
     </div>
-@endif
+
+    <div class="form-group">
+        {!! Form::textarea('description', null,
+        ['class' => 'form-control', 'rows' => '5',
+        'placeholder' => trans('article.fields.description')]) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::textarea('content', null,
+        ['class' => 'form-control', 'rows' => '10',
+        'placeholder' => trans('article.fields.content')]) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::select('section_id', $section_list, null,
+        ['class' => 'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! Form::text('tag_list', null,
+        ['class' => 'form-control',
+        'placeholder' => trans('article.fields.tags')]) !!}
+    </div>
+
+    @if(isset($article))
+        <div class="form-group">
+            {!! Form::submit(trans('article.edit'),
+            ['class' => 'btn btn-warning col-sm-12']) !!}
+        </div>
+    @else
+        <div class="form-group">
+            {!! Form::submit(trans('article.create'),
+            ['class' => 'btn btn-success col-sm-12']) !!}
+        </div>
+    @endif
+</div>
+<div class="col-sm-3">
+    <a href="#" class="btn btn-default col-sm-12">
+        {{ trans('common.select_image') }}
+    </a>
+    <a href="#" class="btn btn-default col-sm-12">
+        {{ trans('common.upload_image') }}
+    </a>
+    <div class="thumbnail col-sm-12">
+        {!! HTML::image('http://pioneerinstitute.org/wp-content/uploads/Test-keyboard.jpg') !!}
+    </div>
+</div>
 
 @section('footer_script')
     <script>
