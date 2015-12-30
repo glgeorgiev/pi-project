@@ -1,3 +1,4 @@
+<div class="filter-form">
 {!! Form::open(['method' => 'GET']) !!}
     <div class="form-group">
         <div class="col-sm-3">
@@ -16,3 +17,4 @@
         </div>
     </div>
 {!! Form::close() !!}
+</div>

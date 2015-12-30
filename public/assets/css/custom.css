@@ -1,20 +1,8 @@
 .inline-form {
     display: inline-block;
 }
-.sm-image {
-    max-width: 32px;
-    max-height: 18px;
-}
-.md-image {
-    max-width: 160px;
-    max-height: 90px;
-}
-.lg-image {
-    max-width: 640px;
-    max-height: 360px;
-}
 #main-content .panel > .panel-heading > h3 {
-    margin: 4px 0px;
+    margin: 4px 0;
 }
 #select-image-results .option {
     cursor: pointer;
@@ -23,4 +11,8 @@
 #select-image-results .selected {
     background-color: #AAA;
     border: 1px solid #444;
+}
+.filter-form {
+    border: 1px solid #888;
+    background-color: #AAA;
 }
