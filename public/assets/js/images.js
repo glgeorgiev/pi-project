@@ -55,6 +55,13 @@ jQuery(function($) {
             data: $form.serialize(),
             success: function(html) {
                 $('#select-image-results').html(html);
+
+                var current_image_id = $(':input[name="image_id"]').val();
+                if (current_image_id) {
+                    $('#select-image-results')
+                        .find('[data-image_id="' + current_image_id + '"]')
+                        .addClass('selected');
+                }
             },
             error: function() {
                 alert('There was an error');
