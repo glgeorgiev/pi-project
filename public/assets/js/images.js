@@ -13,6 +13,7 @@ jQuery(function($) {
         $.ajax({
             url: $this.attr('action'),
             type: 'POST',
+            data: formData,
             xhr: function() {
                 var myXhr = $.ajaxSettings.xhr();
                 if(myXhr.upload){
@@ -34,14 +35,32 @@ jQuery(function($) {
                 $(':input[name="image_id"]').val(data.image_id);
                 $('.selected-image').find('img').attr('src', data.image_url);
                 $('#uploadImageModal').modal('hide');
+                $('.progress-bar').css('width', '0%').html('0%');
+                $('#upload-image-form').get(0).reset();
             },
             error: function() {
                 alert('There was an error');
-            },
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false
+            }
         });
+    });
+
+    $('#select-image-form-submit-btn').on('click', function() {
+        var $form = $('#select-image-form');
+        var formData = new FormData($form.get(0));
+        $.ajax({
+            url: $form.attr('action'),
+            type: 'GET',
+            data: formData,
+            success: function(data) {
+                console.log(data);
+            },
+            error: function() {
+                alert('There was an error');
+            }
+        });
+    });
+
+    $('a[href="#selectImageModal"]').on('click', function() {
+        $('#select-image-form-submit-btn').trigger('click');
     });
 });

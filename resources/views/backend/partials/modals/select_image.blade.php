@@ -8,7 +8,7 @@
             </div>
             <div class="modal-body">
                 <div class="col-sm-12">
-                    {!! Form::open(['method' => 'get', 'id' => 'ajax-search-image-form',
+                    {!! Form::open(['method' => 'get', 'id' => 'select-image-form',
                         'url' => route('admin.image.index')]) !!}
                         <div class="form-group">
                             <div class="col-sm-3">
@@ -22,14 +22,14 @@
                                 'placeholder' => trans('picture.labels.title')]) !!}
                             </div>
                             {!! Form::hidden('page', 1) !!}
-                            <a id="ajax-search-image-btn"
+                            <a id="select-image-form-submit-btn"
                                 class="btn btn-primary col-sm-3"
                                 href="javascript:void(0);">
                                 {!! trans('common.search') !!}
                             </a>
                         </div>
                     {!! Form::close() !!}
-                    <div id="ajax-search-image-results"></div>
+                    <div id="select-image-results"></div>
                 </div>
                 <div class="clearfix"></div>
             </div>

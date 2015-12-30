@@ -22,6 +22,10 @@ class ImageController extends Controller
     {
         $images = Image::ordered()->paginate(config('constants.per_page'));
 
+        if (request()->ajax()) {
+            return response()->json($images);
+        }
+
         return view('backend.pages.image.index', compact('images'));
     }
 
