@@ -22,7 +22,17 @@ jQuery(function($) {
                 return myXhr;
             },
             success: function(data) {
-                console.log(data);
+                if (! data.hasOwnProperty('result') ||
+                    data.result != 'OK') {
+                    alert('There was an error');
+                }
+                if (! data.hasOwnProperty('image_id') ||
+                    ! data.hasOwnProperty('image_title') ||
+                    ! data.hasOwnProperty('image_url')) {
+                    alert('There was an error');
+                }
+                $(':input[name="image_id"]').val(data.image_id);
+                $('.selected-image').find('img').attr('src', data.image_url);
             },
             error: function() {
                 alert('There was an error');

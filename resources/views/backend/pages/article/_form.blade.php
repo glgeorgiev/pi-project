@@ -62,7 +62,7 @@
         <div class="clearfix"></div>
     </div>
     <div class="form-group">
-        <div class="thumbnail col-sm-12">
+        <div class="thumbnail col-sm-12 selected-image">
             @if(isset($article) && $article->image)
                 {!! HTML::image($article->image->url, 'selected image') !!}
             @else
@@ -78,7 +78,7 @@
     {!! HTML::script('assets/js/images.js') !!}
     <script>
         jQuery(function($) {
-            $(':input[name=tag_list]').tagsInput({
+            $(':input[name="tag_list"]').tagsInput({
                 width:'auto',
                 defaultText: '{{ trans('article.field.tags') }}',
                 minChars: 2

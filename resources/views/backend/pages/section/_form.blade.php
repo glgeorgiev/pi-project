@@ -51,7 +51,7 @@
         <div class="clearfix"></div>
     </div>
     <div class="form-group">
-        <div class="thumbnail col-sm-12">
+        <div class="thumbnail col-sm-12 selected-image">
             @if(isset($section) && $section->image)
                 {!! HTML::image($section->image->url, 'selected image') !!}
             @else
