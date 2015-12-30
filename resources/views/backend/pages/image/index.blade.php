@@ -45,7 +45,9 @@
                         </div>
                     @endforeach
                 </div>
-                {!! $images->appends(Request::all())->render() !!}
+                <div class="text-center">
+                    {!! $images->appends(Request::all())->render() !!}
+                </div>
             </div>
         </section>
     </div>

@@ -60,7 +60,9 @@
                     @endforeach
                     </tbody>
                 </table>
-                {!! $articles->appends(Request::all())->render() !!}
+                <div class="text-center">
+                    {!! $articles->appends(Request::all())->render() !!}
+                </div>
             </div>
         </section>
     </div>

@@ -4,6 +4,6 @@
         <p><span class="label label-default">{{ $image->title }}</span></p>
     </div>
 @endforeach
-<div class="ajax-pagination">
-{!! $images->appends(Request::all())->render() !!}
+<div class="ajax-pagination text-center">
+    {!! $images->appends(Request::all())->render() !!}
 </div>

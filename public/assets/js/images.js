@@ -85,6 +85,25 @@ jQuery(function($) {
             $(':input[name="image_id"]').val($this.attr('data-image_id'));
             $('.selected-image').find('img').attr('src', $this.find('img').attr('src'));
         }
+    }).on('click', '.ajax-pagination a', function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr('href'),
+            type: 'GET',
+            success: function(html) {
+                $('#select-image-results').html(html);
+
+                var current_image_id = $(':input[name="image_id"]').val();
+                if (current_image_id) {
+                    $('#select-image-results')
+                        .find('[data-image_id="' + current_image_id + '"]')
+                        .addClass('selected');
+                }
+            },
+            error: function() {
+                alert('There was an error');
+            }
+        });
     });
 
     $('#remove-selected-image').on('click', function() {

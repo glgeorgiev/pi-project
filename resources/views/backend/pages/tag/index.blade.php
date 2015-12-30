@@ -58,7 +58,9 @@
                     @endforeach
                     </tbody>
                 </table>
-                {!! $tags->appends(Request::all())->render() !!}
+                <div class="text-center">
+                    {!! $tags->appends(Request::all())->render() !!}
+                </div>
             </div>
         </section>
     </div>
