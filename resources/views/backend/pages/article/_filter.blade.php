@@ -1,17 +1,17 @@
 <div class="filter-form">
 {!! Form::open(['method' => 'GET']) !!}
     <div class="form-group">
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             {!! Form::text('id', Request::input('id'),
             ['class' => 'form-control',
             'placeholder' => trans('common.id')]) !!}
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             {!! Form::text('title', Request::input('title'),
             ['class' => 'form-control',
             'placeholder' => trans('common.title')]) !!}
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             {!! Form::select('section_id', $section_list,
             Request::input('section_id'), ['class' => 'form-control']) !!}
         </div>
