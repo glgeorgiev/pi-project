@@ -11,6 +11,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('admin.image.index') }}"
+                        @if(Request::segment(2) == 'image')
+                            class="active"
+                        @endif>
+                        {!! trans('sidebar.image') !!}
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('admin.section.index') }}"
                         @if(Request::segment(2) == 'section')
                             class="active"

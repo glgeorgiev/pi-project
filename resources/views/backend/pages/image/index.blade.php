@@ -17,7 +17,7 @@
                 <div class="col-sm-12">
                     @foreach($images as $image)
                         <div class="thumbnail col-sm-3">
-                            {!! HTML::image($image->url, $image->title) !!}
+                            {!! HTML::image($image->url, $image->title) !!}<br />
                             
                             <p><span class="label label-default">{{ $image->title }}</span></p>
                             
