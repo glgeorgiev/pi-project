@@ -50,20 +50,24 @@
 </div>
 <div class="col-sm-3 well">
     <div class="form-group">
-        <a href="#" class="btn btn-primary col-sm-12">
+        <a href="#" class="btn btn-info col-sm-12">
             {{ trans('common.select_image') }}
         </a>
         <div class="clearfix"></div>
     </div>
     <div class="form-group">
-        <a href="#" class="btn btn-primary col-sm-12">
+        <a href="#" class="btn btn-info col-sm-12">
             {{ trans('common.upload_image') }}
         </a>
         <div class="clearfix"></div>
     </div>
     <div class="form-group">
         <div class="thumbnail col-sm-12">
-            {!! HTML::image('http://pioneerinstitute.org/wp-content/uploads/Test-keyboard.jpg') !!}
+            @if(isset($article) && $article->image)
+                {!! HTML::image($article->image->url, 'selected image') !!}
+            @else
+                {!! HTML::image('assets/img/no-image.png', 'selected image') !!}
+            @endif
         </div>
         <div class="clearfix"></div>
     </div>
