@@ -2,7 +2,7 @@
 
 <div class="form-group">
     {!! Form::text('title', null,
-    ['class' => 'form-control',
+    ['class' => 'form-control', 'required' => 'required',
     'placeholder' => trans('image.fields.title')]) !!}
 </div>
 

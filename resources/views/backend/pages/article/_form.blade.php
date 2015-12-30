@@ -3,13 +3,13 @@
 
     <div class="form-group">
         {!! Form::text('title', null,
-        ['class' => 'form-control',
+        ['class' => 'form-control', 'required' => 'required',
         'placeholder' => trans('article.fields.title')]) !!}
     </div>
 
     <div class="form-group">
         {!! Form::text('slug', null,
-        ['class' => 'form-control',
+        ['class' => 'form-control', 'required' => 'required',
         'placeholder' => trans('article.fields.slug')]) !!}
     </div>
 
@@ -27,7 +27,7 @@
 
     <div class="form-group">
         {!! Form::select('section_id', $section_list, null,
-        ['class' => 'form-control']) !!}
+        ['class' => 'form-control',  'required' => 'required']) !!}
     </div>
 
     <div class="form-group">

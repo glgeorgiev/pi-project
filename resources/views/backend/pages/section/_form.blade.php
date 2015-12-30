@@ -3,13 +3,13 @@
 
     <div class="form-group">
         {!! Form::text('title', null,
-        ['class' => 'form-control',
+        ['class' => 'form-control', 'required' => 'required',
         'placeholder' => trans('section.fields.title')]) !!}
     </div>
 
     <div class="form-group">
         {!! Form::text('slug', null,
-        ['class' => 'form-control',
+        ['class' => 'form-control', 'required' => 'required',
         'placeholder' => trans('section.fields.slug')]) !!}
     </div>
 
@@ -21,7 +21,7 @@
 
     <div class="form-group">
         {!! Form::number('order', null,
-        ['class' => 'form-control', 'min' => '1', 'max' => '999',
+        ['class' => 'form-control', 'min' => '1', 'max' => '999', 'required' => 'required',
         'placeholder' => trans('section.fields.order')]) !!}
     </div>
 
