@@ -31,6 +31,7 @@
                     {!! Form::close() !!}
                     <div id="ajax-search-image-results"></div>
                 </div>
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>

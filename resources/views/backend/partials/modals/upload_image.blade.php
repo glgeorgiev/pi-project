@@ -14,6 +14,7 @@
                         @include ('backend.pages.image._form')
                     {!! Form::close() !!}
                 </div>
+                <div class="clearfix"></div>
             </div>
         </div>
     </div>
