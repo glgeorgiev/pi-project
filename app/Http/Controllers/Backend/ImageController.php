@@ -20,7 +20,7 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images = Image::order()->paginate(config('constants.per_page'));
+        $images = Image::ordered()->paginate(config('constants.per_page'));
 
         return view('backend.pages.image.index', compact('images'));
     }
