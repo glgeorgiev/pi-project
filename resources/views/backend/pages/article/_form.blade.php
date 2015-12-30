@@ -50,13 +50,13 @@
 </div>
 <div class="col-sm-3 well">
     <div class="form-group">
-        <a href="#" class="btn btn-info col-sm-12">
+        <a href="#selectImageModal" class="btn btn-info col-sm-12">
             {{ trans('common.select_image') }}
         </a>
         <div class="clearfix"></div>
     </div>
     <div class="form-group">
-        <a href="#" class="btn btn-info col-sm-12">
+        <a href="#uploadImageModal" class="btn btn-info col-sm-12">
             {{ trans('common.upload_image') }}
         </a>
         <div class="clearfix"></div>
@@ -71,6 +71,7 @@
         </div>
         <div class="clearfix"></div>
     </div>
+    {!! Form::hidden('image_id', isset($article) ? $article->image_id : null) !!}
 </div>
 
 @section('footer_script')

@@ -21,4 +21,6 @@
             </div>
         </section>
     </div>
+    @include('backend.partials.modals.select_image')
+    @include('backend.partials.modals.upload_image')
 @endsection
