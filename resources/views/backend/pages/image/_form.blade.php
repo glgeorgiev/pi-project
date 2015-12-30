@@ -7,7 +7,7 @@
 </div>
 
 @if(isset($image))
-    <div class="form-group thumbnail">
+    <div class="form-group thumbnail col-sm-3">
         {!! HTML::image($image->url, $image->title) !!}
     </div>
 
@@ -16,7 +16,9 @@
         ['class' => 'btn btn-warning col-sm-12']) !!}
     </div>
 @else
-    {!! Form::file('file') !!}
+    <div class="form-group">
+        {!! Form::file('file') !!}
+    </div>
 
     <div class="form-group">
         {!! Form::submit(trans('image.create'),

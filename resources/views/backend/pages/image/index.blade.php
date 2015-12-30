@@ -16,7 +16,7 @@
             <div class="panel-body">
                 <div class="col-sm-12">
                     @foreach($images as $image)
-                        <div class="thumbnail">
+                        <div class="thumbnail col-sm-3">
                             {!! HTML::image($image->url, $image->title) !!}
                             
                             <p><span class="label label-default">{{ $image->title }}</span></p>
