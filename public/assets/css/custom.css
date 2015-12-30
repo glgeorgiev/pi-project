@@ -13,6 +13,7 @@
     border: 1px solid #444;
 }
 .filter-form {
-    border: 1px solid #888;
-    background-color: #AAA;
+    border: 1px solid #AAA;
+    background-color: #EEE;
+    padding-bottom: 15px;
 }

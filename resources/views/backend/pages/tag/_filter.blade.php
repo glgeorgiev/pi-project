@@ -16,5 +16,6 @@
             ['class' => 'btn btn-primary col-sm-12']) !!}
         </div>
     </div>
+    <div class="clearfix"></div>
 {!! Form::close() !!}
 </div>
