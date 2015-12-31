@@ -35,6 +35,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('admin.user.index') }}"
+                       @if(Request::segment(2) == 'user')
+                       class="active"
+                            @endif>
+                        {!! trans('sidebar.user') !!}
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('admin.menu.index') }}"
                        @if(Request::segment(2) == 'menu')
                        class="active"

@@ -72,4 +72,24 @@ class User extends Model implements AuthenticatableContract,
 
         return false;
     }
+
+    public static function getFilteredResults()
+    {
+        $query = static::ordered();
+
+        if (Request::has('id')) {
+            $query = $query->where('id', Request::input('id'));
+        }
+        if (Request::has('name')) {
+            $query = $query->where('name', 'like', '%' . Request::input('name') . '%');
+        }
+        if (Request::has('email')) {
+            $query = $query->where('email', 'like', '%' . Request::input('title') . '%');
+        }
+        if (Request::has('is_admin')) {
+            $query = $query->where('is_admin', Request::input('is_admin'));
+        }
+
+        return $query->paginate(config('constants.per_page'));
+    }
 }

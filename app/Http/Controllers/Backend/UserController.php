@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\User;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
@@ -22,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::ordered()->paginate(config('constants.per_page'));
+        $users = User::getFilteredResults();
 
         return view('backend.pages.user.index', compact('users'));
     }
@@ -40,12 +38,17 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  UserRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        User::create($request->all());
+        $user = new User();
+        $user->name     = $request->input('name');
+        $user->email    = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->is_admin = $request->input('is_admin');
+        $user->save();
 
         return $this->redirect();
     }
@@ -75,13 +78,19 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  UserRequest  $request
      * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
-        $user->update($request->all());
+        $user->name     = $request->input('name');
+        $user->email    = $request->input('email');
+        if ($request->has('password')) {
+            $user->password = bcrypt($request->input('password'));
+        }
+        $user->is_admin = $request->input('is_admin');
+        $user->save();
 
         return $this->redirect();
     }
