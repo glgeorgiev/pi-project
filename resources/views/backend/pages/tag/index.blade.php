@@ -45,15 +45,13 @@
                                     <i class="fa fa-edit"></i>
                                 </a>
 
-                                {!! Form::model($tag,
-                                    ['url' => route('admin.tag.destroy',
-                                    ['tag' => $tag->id]),
-                                    'method' => 'DELETE',
-                                    'class' => 'inline-form']) !!}
-                                    {!! Form::button('<i class="fa fa-trash-o"></i>',
-                                        ['class' => 'btn btn-sm btn-danger',
-                                        'type' => 'submit']) !!}
-                                {!! Form::close() !!}
+                                <a class="btn btn-sm btn-danger"
+                                   href="#destroyModal" data-toggle="modal"
+                                   data-url="{{ route('admin.tag.destroy',
+                                    ['tag' => $tag->id]) }}"
+                                   data-text="alabala">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
                             </td>
                         </tr>
                     @endforeach

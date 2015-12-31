@@ -34,15 +34,13 @@
                                 <i class="fa fa-edit"></i>
                             </a>
 
-                            {!! Form::model($image,
-                                ['url' => route('admin.image.destroy',
-                                ['image' => $image->id]),
-                                'method' => 'DELETE',
-                                'class' => 'inline-form']) !!}
-                            {!! Form::button('<i class="fa fa-trash-o"></i>',
-                                ['class' => 'btn btn-sm btn-danger',
-                                'type' => 'submit']) !!}
-                            {!! Form::close() !!}
+                            <a class="btn btn-sm btn-danger"
+                               href="#destroyModal" data-toggle="modal"
+                               data-url="{{ route('admin.image.destroy',
+                                    ['image' => $image->id]) }}"
+                               data-text="alabala">
+                                <i class="fa fa-trash-o"></i>
+                            </a>
                         </div>
                     @endforeach
                 </div>

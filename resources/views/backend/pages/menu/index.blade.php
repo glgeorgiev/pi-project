@@ -47,15 +47,13 @@
                                     <i class="fa fa-edit"></i>
                                 </a>
 
-                                {!! Form::model($menu,
-                                    ['url' => route('admin.menu.destroy',
-                                    ['menu' => $menu->slug]),
-                                    'method' => 'DELETE',
-                                    'class' => 'inline-form']) !!}
-                                    {!! Form::button('<i class="fa fa-trash-o"></i>',
-                                        ['class' => 'btn btn-sm btn-danger',
-                                        'type' => 'submit']) !!}
-                                {!! Form::close() !!}
+                                <a class="btn btn-sm btn-danger"
+                                   href="#destroyModal" data-toggle="modal"
+                                   data-url="{{ route('admin.menu.destroy',
+                                    ['menu' => $menu->id]) }}"
+                                   data-text="alabala">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
