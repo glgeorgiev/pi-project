@@ -3,6 +3,9 @@
     color: #FFF;
     padding: 20px;
 }
-.nav-footer {
+.nav-footer a {
     color: #FFF;
+}
+.nav-footer a:hover {
+    color: #E74944;
 }
