@@ -1,5 +1,18 @@
 <div class="footer">
-    Това ще е фуутър-а
+    <ul class="footer-nav">
+        <li>
+            <a href="#">Едно</a>
+        </li>
+        <li>
+            <a href="#">Две</a>
+        </li>
+        <li>
+            <a href="#">Три</a>
+        </li>
+        <li>
+            <a href="#">Четири</a>
+        </li>
+    </ul>
 </div>
 
 {!! HTML::script('//code.jquery.com/jquery-1.11.3.min.js') !!}
