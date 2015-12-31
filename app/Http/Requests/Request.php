@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Route;
 
 abstract class Request extends FormRequest
 {
@@ -12,7 +13,7 @@ abstract class Request extends FormRequest
 
     public function __construct()
     {
-        $param = $this->route($this->modelName);
+        $param = Route::current()->getParameter($this->modelName);
 
         if (! is_null($param)) {
             $this->idOrEmpty = ',' . $param->id;
