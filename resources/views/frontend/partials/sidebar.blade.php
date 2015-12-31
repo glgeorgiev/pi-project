@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div class="panel panel-success">
     <div class="panel-heading">
         <h3 class="panel-title">Секции</h3>
     </div>
@@ -6,7 +6,7 @@
         Списък със секции (всички)
     </div>
 </div>
-<div class="panel panel-success">
+<div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">Анкета</h3>
     </div>
@@ -14,7 +14,7 @@
         Тук ще бъде анкетата
     </div>
 </div>
-<div class="panel panel-primary">
+<div class="panel panel-success">
     <div class="panel-heading">
         <h3 class="panel-title">Тагове</h3>
     </div>
@@ -22,7 +22,7 @@
         Списък с последните тагове (10)
     </div>
 </div>
-<div class="panel panel-success">
+<div class="panel panel-primary">
     <div class="panel-heading">
         <h3 class="panel-title">Най-четени статии</h3>
     </div>
@@ -30,7 +30,7 @@
         Списък с най-четените статии (10)
     </div>
 </div>
-<div class="panel panel-primary">
+<div class="panel panel-success">
     <div class="panel-heading">
         <h3 class="panel-title">Най-харесвани статии</h3>
     </div>
