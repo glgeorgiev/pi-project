@@ -37,8 +37,9 @@
                             <a class="btn btn-sm btn-danger"
                                href="#destroyModal" data-toggle="modal"
                                data-url="{{ route('admin.image.destroy',
-                                    ['image' => $image->id]) }}"
-                               data-text="alabala">
+                               ['image' => $image->id]) }}"
+                               data-text="{{ trans('common.destroy_image',
+                               ['id' => $image->id, 'title' => $image->title]) }}">
                                 <i class="fa fa-trash-o"></i>
                             </a>
                         </div>

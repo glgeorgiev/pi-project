@@ -61,7 +61,8 @@
                                     href="#destroyModal" data-toggle="modal"
                                     data-url="{{ route('admin.user.destroy',
                                     ['user' => $user->id]) }}"
-                                    data-text="alabala">
+                                   data-text="{{ trans('common.destroy_user',
+                                   ['id' => $user->id, 'email' => $user->email]) }}">
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>
