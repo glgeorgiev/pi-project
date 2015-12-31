@@ -25,7 +25,7 @@ class UserRequest extends Request
     {
         return [
             'name'      => 'required|max:255',
-            'email'     => 'required|max:255|unique:users,email' . $this->idOrEmpty,
+            'email'     => 'required|email|max:255|unique:users,email' . $this->idOrEmpty,
             'password'  => ($this->idOrEmpty ? '' : 'required|') . 'confirmed|min:6',
             'is_admin'  => 'required|boolean',
         ];

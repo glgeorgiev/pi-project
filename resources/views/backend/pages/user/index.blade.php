@@ -47,19 +47,19 @@
                             <td>
                                 <a class="btn btn-sm btn-info"
                                     href="{{ route('admin.user.show',
-                                    ['user' => $user->slug]) }}">
+                                    ['user' => $user->id]) }}">
                                     <i class="fa fa-eye"></i>
                                 </a>
 
                                 <a class="btn btn-sm btn-warning"
                                     href="{{ route('admin.user.edit',
-                                    ['user' => $user->slug]) }}">
+                                    ['user' => $user->id]) }}">
                                     <i class="fa fa-edit"></i>
                                 </a>
 
                                 {!! Form::model($user,
                                     ['url' => route('admin.user.destroy',
-                                    ['user' => $user->slug]),
+                                    ['user' => $user->id]),
                                     'method' => 'DELETE',
                                     'class' => 'inline-form']) !!}
                                     {!! Form::button('<i class="fa fa-trash-o"></i>',

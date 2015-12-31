@@ -27,7 +27,7 @@
 <div class="form-group">
     {!! Form::hidden('is_admin', 0) !!}
     {!! Form::checkbox('is_admin', 1, null,
-    ['class' => 'form-control']) !!}
+    ['id' => 'is_admin']) !!}
     {!! Form::label('is_admin', trans('user.fields.is_admin')) !!}
 </div>
 
