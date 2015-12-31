@@ -4,3 +4,4 @@
 <meta name="description" content="{{ isset($meta_description) ? $meta_description : '' }}">
 
 {!! HTML::style('assets/css/bootstrap.journal.theme.min.css') !!}
+{!! HTML::style('assets/css/frontend.css') !!}

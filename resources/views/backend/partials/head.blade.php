@@ -15,4 +15,4 @@
 {!! HTML::style('assets/css/jquery.tagsinput.css') !!}
 {!! HTML::style('assets/css/style.css') !!}
 {!! HTML::style('assets/css/style-responsive.css') !!}
-{!! HTML::style('assets/css/custom.css') !!}
+{!! HTML::style('assets/css/backend.css') !!}
