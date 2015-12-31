@@ -1,5 +1,6 @@
 <div class="footer">
-    <ul class="nav nav-pills nav-footer">
+    Копирайт текстс
+    <ul class="nav nav-pills nav-footer pull-right">
         <li>
             <a href="#">Едно</a>
         </li>
@@ -13,6 +14,7 @@
             <a href="#">Четири</a>
         </li>
     </ul>
+    <div class="clearfix"></div>
 </div>
 
 {!! HTML::script('//code.jquery.com/jquery-1.11.3.min.js') !!}
