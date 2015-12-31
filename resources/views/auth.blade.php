@@ -7,6 +7,6 @@
 <section id="container">
     @yield('content')
 </section>
-@include('backend.partials.bottom')
+@include('backend.partials.footer')
 </body>
 </html>

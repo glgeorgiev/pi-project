@@ -16,7 +16,7 @@
     </div>
 </section>
 
-@include('backend.partials.bottom')
+@include('backend.partials.footer')
 @yield('footer_script')
 </body>
 </html>

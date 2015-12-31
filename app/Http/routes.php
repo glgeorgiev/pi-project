@@ -34,20 +34,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
 });
 
 //What every user can see
-Route::get('',                      ['as' => 'index',       'uses' => 'Frontend\IndexController@index']);
-Route::get('gallery',               ['as' => 'gallery',     'uses' => 'Frontend\GalleryController@index']);
-Route::get('poll',                  ['as' => 'poll.index',  'uses' => 'Frontend\PollController@index']);
-Route::get('poll/{poll}',           ['as' => 'poll.show',   'uses' => 'Frontend\PollController@show']);
-Route::get('tag',                   ['as' => 'tag.index',   'uses' => 'Frontend\TagController@index']);
-Route::get('tag/{tag}',             ['as' => 'tag.show',    'uses' => 'Frontend\TagController@show']);
-Route::get('{section}',             ['as' => 'section',     'uses' => 'Frontend\SectionController@index']);
-Route::get('{section}/{article}',   ['as' => 'article',     'uses' => 'Frontend\ArticleController@index']);
+Route::get('',                              ['as' => 'index',   'uses' => 'Frontend\IndexController@index']);
+Route::get('polls',                         ['as' => 'polls',   'uses' => 'Frontend\PollsController@index']);
+Route::get('tag/{tag_slug}',                ['as' => 'tag',     'uses' => 'Frontend\TagController@index']);
+Route::get('{section_slug}',                ['as' => 'section', 'uses' => 'Frontend\SectionController@index']);
+Route::get('{section_slug}/{article_slug}', ['as' => 'article', 'uses' => 'Frontend\ArticleController@index']);
 
 Route::group(['middleware' => 'ajax'], function() {
-    Route::post('comment', ['as' => 'comment', 'middleware' => 'auth', 'uses' => 'Frontend\ArticleController@comment']);
-
-    Route::post('poll/{poll}',          ['as' => 'poll.vote',       'uses' => 'Frontend\PollController@vote']);
-    Route::post('{section}/{article}',  ['as' => 'article.rate',    'uses' => 'Frontend\ArticleController@rate']);
+    Route::post('comment',  ['as' => 'comment', 'uses' => 'Frontend\ArticleController@comment']);
+    Route::post('vote',     ['as' => 'vote',    'uses' => 'Frontend\PollController@vote']);
+    Route::post('rate',     ['as' => 'rate',    'uses' => 'Frontend\ArticleController@rate']);
 });
 
 //Redirect everything other to the index page

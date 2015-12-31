@@ -13,6 +13,6 @@
         @include('frontend.partials.sidebar')
     </div>
 </div>
-@include('frontend.partials.bottom')
+@include('frontend.partials.footer')
 </body>
 </html>
