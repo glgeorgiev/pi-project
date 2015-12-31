@@ -65,4 +65,5 @@
             </div>
         </section>
     </div>
+    @include('backend.partials.modals.destroy')
 @endsection
