@@ -1,5 +1,5 @@
 <div class="footer">
-    <ul class="footer-nav">
+    <ul class="nav nav-pills nav-footer">
         <li>
             <a href="#">Едно</a>
         </li>
