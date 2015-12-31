@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
 use App\Section;
 
-class SectionController extends Controller
+class SectionController extends FrontendController
 {
     /**
      * @param string $section_slug

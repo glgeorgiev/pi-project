@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Article;
-use App\Http\Controllers\Controller;
 use App\Section;
 
-class ArticleController extends Controller
+class ArticleController extends FrontendController
 {
     /**
      * @param string $section_slug

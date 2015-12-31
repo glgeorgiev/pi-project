@@ -6,7 +6,7 @@ class Poll extends Model
 {
     protected $table = 'polls';
 
-    protected $fillable = ['title', 'slug', 'description'];
+    protected $fillable = ['title', 'description', 'show_in_sidebar'];
 
     public function poll_answers()
     {

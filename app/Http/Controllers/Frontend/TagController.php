@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
 use App\Tag;
 
-class TagController extends Controller
+class TagController extends FrontendController
 {
     /**
      * @param  string $tag_slug
