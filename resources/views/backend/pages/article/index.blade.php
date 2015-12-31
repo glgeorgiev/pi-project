@@ -37,19 +37,19 @@
                             <td>
                                 <a class="btn btn-sm btn-info"
                                     href="{{ route('admin.article.show',
-                                    ['article' => $article->slug]) }}">
+                                    ['article' => $article->id]) }}">
                                     <i class="fa fa-eye"></i>
                                 </a>
 
                                 <a class="btn btn-sm btn-warning"
                                     href="{{ route('admin.article.edit',
-                                    ['article' => $article->slug]) }}">
+                                    ['article' => $article->id]) }}">
                                     <i class="fa fa-edit"></i>
                                 </a>
 
                                 {!! Form::model($article,
                                     ['url' => route('admin.article.destroy',
-                                    ['article' => $article->slug]),
+                                    ['article' => $article->id]),
                                     'method' => 'DELETE',
                                     'class' => 'inline-form']) !!}
                                     {!! Form::button('<i class="fa fa-trash-o"></i>',

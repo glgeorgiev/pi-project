@@ -35,19 +35,19 @@
                             <td>
                                 <a class="btn btn-sm btn-info"
                                     href="{{ route('admin.tag.show',
-                                    ['tag' => $tag->slug]) }}">
+                                    ['tag' => $tag->id]) }}">
                                     <i class="fa fa-eye"></i>
                                 </a>
 
                                 <a class="btn btn-sm btn-warning"
                                     href="{{ route('admin.tag.edit',
-                                    ['tag' => $tag->slug]) }}">
+                                    ['tag' => $tag->id]) }}">
                                     <i class="fa fa-edit"></i>
                                 </a>
 
                                 {!! Form::model($tag,
                                     ['url' => route('admin.tag.destroy',
-                                    ['tag' => $tag->slug]),
+                                    ['tag' => $tag->id]),
                                     'method' => 'DELETE',
                                     'class' => 'inline-form']) !!}
                                     {!! Form::button('<i class="fa fa-trash-o"></i>',
