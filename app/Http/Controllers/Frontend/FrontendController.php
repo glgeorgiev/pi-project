@@ -28,8 +28,10 @@ class FrontendController extends Controller
             ['limit' => config('constants.sidebar_tags')]));
         View::share('most_read_articles', Article::with('section')
             ->where('created_at', '>', Carbon::now()->subMonth())
-            ->orderBy('views', 'desc')->limit(config('constants.most_read_articles')));
+            ->orderBy('views', 'desc')
+            ->limit(config('constants.most_read_articles'))->get());
         View::share('most_liked_articles', Article::with('section')
-            ->orderBy('likes', 'desc')->limit(config('constants.most_liked_articles')));
+            ->orderBy('likes', 'desc')
+            ->limit(config('constants.most_liked_articles'))->get());
     }
 }
