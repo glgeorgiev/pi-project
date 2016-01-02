@@ -52,7 +52,7 @@
         <div class="panel-body">
             <ul class="nav">
                 @foreach($most_read_articles as $most_read_article)
-                    @if($article->section)
+                    @if($most_read_article->section)
                         <li>
                             <a href="{{ route('article', [
                                 'section_slug' => $most_read_article->section->slug,
@@ -75,7 +75,7 @@
         <div class="panel-body">
             <ul class="nav">
                 @foreach($most_liked_articles as $most_liked_article)
-                    @if($article->section)
+                    @if($most_liked_article->section)
                         <li>
                             <a href="{{ route('article', [
                                 'section_slug' => $most_liked_article->section->slug,
