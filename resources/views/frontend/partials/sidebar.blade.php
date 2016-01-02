@@ -3,7 +3,7 @@
         <h3 class="panel-title">Секции</h3>
     </div>
     <div class="panel-body">
-        <ul class="nav nav-pills">
+        <ul class="nav">
             @foreach($sections as $section)
                 <li>
                     <a href="{{ route('section',
@@ -33,18 +33,36 @@
 @endif
 <div class="panel panel-success">
     <div class="panel-heading">
-        <h3 class="panel-title">Тагове</h3>
+        <h3 class="panel-title">Етикети</h3>
     </div>
     <div class="panel-body">
-        Списък с последните тагове (10)
+        @foreach($sidebar_tags as $sidebar_tag)
+            <a href="{{ route('tag', ['tag_slug' => $sidebar_tag->slug]) }}"
+                class="label label-success">
+                {{ $sidebar_tag->title }}
+            </a>
+        @endforeach
     </div>
 </div>
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title">Най-четени статии</h3>
+        <h3 class="panel-title">Най-четени статии за последния месец</h3>
     </div>
     <div class="panel-body">
-        Списък с най-четените статии (10)
+        <ul class="nav">
+            @foreach($most_read_articles as $most_read_article)
+                @if($article->section)
+                    <li>
+                        <a href="{{ route('article', [
+                            'section_slug' => $most_read_article->section->slug,
+                            'article_slug' => $most_read_article->slug,
+                        ]) }}">
+                            {{ $most_read_article->title }}
+                        </a>
+                    </li>
+                @endif
+            @endforeach
+        </ul>
     </div>
 </div>
 <div class="panel panel-success">
@@ -52,6 +70,19 @@
         <h3 class="panel-title">Най-харесвани статии</h3>
     </div>
     <div class="panel-body">
-        Списък с най-харесваните статии (5)
+        <ul class="nav">
+            @foreach($most_liked_articles as $most_liked_article)
+                @if($article->section)
+                    <li>
+                        <a href="{{ route('article', [
+                            'section_slug' => $most_liked_article->section->slug,
+                            'article_slug' => $most_liked_article->slug,
+                        ]) }}">
+                            {{ $most_liked_article->title }}
+                        </a>
+                    </li>
+                @endif
+            @endforeach
+        </ul>
     </div>
 </div>
