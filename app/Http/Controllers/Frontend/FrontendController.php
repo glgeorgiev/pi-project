@@ -19,13 +19,12 @@ class FrontendController extends Controller
         View::share('sections', Section::order()->get());
         View::share('poll', Poll::with(['poll_answers', 'poll_answers.poll_votes'])
             ->ordered()->where('show_in_sidebar', true)->first());
-        View::share('sidebar_tags', DB::statement(
-            'SELECT DISTINCT article_tag.tag_id AS id,
-                                     tags.title AS title,
-                                     tags.slug  AS slug
-             FROM article_tag JOIN tags ON tags.id = article_tag.tag_id
-             ORDER BY article_tag.updated_at LIMIT :limit',
-            ['limit' => config('constants.sidebar_tags')]));
+        View::share('sidebar_tags', DB::table('article_tag')
+            ->select(['tags.id', 'tags.title', 'tags.slug'])
+            ->join('tags', 'tags.id', '=', 'article_tag.tag_id')
+            ->orderBy('article_tag.updated_at', 'desc')
+            ->limit(config('constants.sidebar_tags'))
+            ->distinct()->get());
         View::share('most_read_articles', Article::with('section')
             ->where('created_at', '>', Carbon::now()->subMonth())
             ->orderBy('views', 'desc')
