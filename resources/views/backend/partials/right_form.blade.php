@@ -23,4 +23,4 @@
     </div>
     <div class="clearfix"></div>
 </div>
-{!! Form::hidden('image_id', isset($record) ? $record->image_id : null) !!}
+{!! Form::hidden('image_id', (isset($record) && $record->image) ? $record->image_id : null) !!}
