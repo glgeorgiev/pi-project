@@ -2,7 +2,7 @@
     {{ $record->title }}
 </h1>
 @if($record->image)
-    <div class="col-sm-3">
+    <div class="col-sm-3 thumbnail">
         {!! HTML::image($record->image->url, $record->title) !!}
     </div>
 @endif
@@ -11,3 +11,4 @@
         {{ $record->description }}
     </div>
 @endif
+<div class="clearfix"></div>
