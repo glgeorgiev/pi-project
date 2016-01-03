@@ -6,6 +6,7 @@ use App\Article;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
 use App\Section;
+use Auth;
 
 class ArticleController extends Controller
 {
@@ -50,7 +51,7 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        $article = Article::create($request->all());
+        $article = Auth::user()->articles()->create($request->all());
 
         $article->saveTags(explode(',', $request->input('tag_list')));
 
