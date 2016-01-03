@@ -40,6 +40,11 @@
                                 Автор: {{ $article->user->name }}
                             </p>
                             <p>
+                                Прочитания: {{ $article->views }}
+                                <i class="fa fa-thumbs-up"></i> {{ $article->likes }}
+                                <i class="fa fa-thumbs-down"></i> {{ $article->dislikes }}
+                            </p>
+                            <p>
                                 @foreach($article->tags as $tag)
                                     <a href="{{ route('tag', ['tag_slug' => $tag->slug]) }}"
                                         class="label label-default">
@@ -49,7 +54,7 @@
                             </p>
                         </div>
                         <div class="col-sm-12">
-                            {{ $article->description }}
+                            <p>{{ $article->description }}</p>
                             <a href="{{ route('article',
                                 ['section_slug' => $article->section->slug,
                                 'article_slug' => $article->slug]) }}">
