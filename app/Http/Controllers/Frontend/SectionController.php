@@ -21,6 +21,6 @@ class SectionController extends FrontendController
         $articles = $section->articles()->with(['section', 'image', 'user', 'tags'])
             ->ordered()->paginate(config('constants.per_page'));
 
-        return view('frontend.pages.article', compact('section', 'articles'));
+        return view('frontend.pages.section', compact('section', 'articles'));
     }
 }

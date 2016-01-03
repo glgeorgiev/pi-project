@@ -21,6 +21,6 @@ class TagController extends FrontendController
         $articles = $tag->articles()->with(['section', 'image', 'user', 'tags'])
             ->ordered()->paginate(config('constants.per_page'));
 
-        return view('frontend.pages.article', compact('tag', 'articles'));
+        return view('frontend.pages.tag', compact('tag', 'articles'));
     }
 }
