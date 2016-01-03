@@ -15,6 +15,7 @@ class FrontendController extends Controller
 {
     public function __construct()
     {
+        Carbon::setLocale('bg');
         View::share('menu', Menu::order()->get());
         View::share('sections', Section::order()->get());
         View::share('poll', Poll::with(['poll_answers', 'poll_answers.poll_votes'])

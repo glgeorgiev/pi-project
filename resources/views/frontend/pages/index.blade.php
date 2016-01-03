@@ -44,7 +44,7 @@
                                     <a href="{{ route('tag', ['tag_slug' => $tag->slug]) }}"
                                         class="label label-default">
                                         {{ $tag->title }}
-                                    </a>
+                                    </a>&nbsp;
                                 @endforeach
                             </p>
                         </div>
