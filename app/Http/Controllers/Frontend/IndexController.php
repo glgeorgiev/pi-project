@@ -15,6 +15,6 @@ class IndexController extends FrontendController
             ->ordered()->limit(config('constants.index_page_articles'))
             ->get();
 
-        return view('frontend.pages.index', compact($articles));
+        return view('frontend.pages.index', compact('articles'));
     }
 }
