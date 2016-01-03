@@ -5,5 +5,5 @@ return [
     'sidebar_tags'          => 15,
     'most_read_articles'    => 10,
     'most_liked_articles'   => 10,
-    'index_page_articles'   => 15,
+    'index_page_articles'   => 10,
 ];

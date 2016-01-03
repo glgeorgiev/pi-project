@@ -40,7 +40,7 @@
             <a href="{{ route('tag', ['tag_slug' => $sidebar_tag->slug]) }}"
                 class="label label-success">
                 {{ $sidebar_tag->title }}
-            </a>
+            </a>&nbsp;
         @endforeach
     </div>
 </div>
