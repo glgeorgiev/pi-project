@@ -9,3 +9,6 @@
 .nav-footer a:hover {
     color: #E74944;
 }
+.article-title {
+    margin: 0;
+}

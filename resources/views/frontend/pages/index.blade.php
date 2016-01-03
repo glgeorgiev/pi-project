@@ -8,7 +8,7 @@
                 @if($article->section && $article->user)
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h2>
+                            <h2 class="article-title">
                                 <a href="{{ route('article',
                                     ['section_slug' => $article->section->slug,
                                     'article_slug' => $article->slug]) }}">
@@ -29,10 +29,14 @@
                                 </a>
                             </div>
                             <div class="col-sm-4">
-                                <small>
-                                    <i class="fa fa-calendar"></i> {{ $article->created_at->format('d.m.Y, l') }}
-                                    <i class="fa fa-clock-o"></i> {{ $article->created_at->format('H:i') }}
-                                </small>
+                                <p>
+                                    <small>
+                                        <i class="fa fa-calendar"></i>
+                                        {{ $article->created_at->format('d.m.Y') }}
+                                        <i class="fa fa-clock-o"></i>
+                                        {{ $article->created_at->format('H:i') }}
+                                    </small>
+                                </p>
                                 <p>
                                     <a href="{{ route('section',
                                         ['section_slug' => $article->section->slug]) }}">
