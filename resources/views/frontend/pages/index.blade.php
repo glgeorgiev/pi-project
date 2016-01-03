@@ -6,7 +6,7 @@
         <div class="panel-body">
             @foreach($articles as $article)
                 @if($article->section && $article->user)
-                    <div class="col-sm-12">
+                    <div class="panel-heading">
                         <h2>
                             <a href="{{ route('article',
                                 ['section_slug' => $article->section->slug,
@@ -14,6 +14,8 @@
                                 {{ $article->title }}
                             </a>
                         </h2>
+                    </div>
+                    <div class="panel-body">
                         <div class="col-sm-8 thumbnail">
                             <a href="{{ route('article',
                                 ['section_slug' => $article->section->slug,
