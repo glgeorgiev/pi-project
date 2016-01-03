@@ -18,7 +18,8 @@ class SectionController extends FrontendController
             return redirect()->route('index');
         }
 
-        $articles = $section->articles()->paginate(config('constants.per_page'));
+        $articles = $section->articles()->with(['section', 'image', 'user', 'tags'])
+            ->ordered()->paginate(config('constants.per_page'));
 
         return view('frontend.pages.article', compact('section', 'articles'));
     }
