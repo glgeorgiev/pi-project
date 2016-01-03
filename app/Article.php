@@ -35,6 +35,11 @@ class Article extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     /**
      * By given array of tags, find or create them
      * and add relationship with the article

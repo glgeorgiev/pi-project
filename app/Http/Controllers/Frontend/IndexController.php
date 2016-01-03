@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Article;
+
 class IndexController extends FrontendController
 {
     /**
@@ -9,6 +11,10 @@ class IndexController extends FrontendController
      */
     public function index()
     {
-        return view('frontend.pages.index');
+        $articles = Article::with(['section', 'image', 'user', 'tags'])
+            ->ordered()->limit(config('constants.index_page_articles'))
+            ->get();
+
+        return view('frontend.pages.index', compact($articles));
     }
 }

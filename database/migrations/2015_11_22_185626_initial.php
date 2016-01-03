@@ -87,11 +87,11 @@ class Initial extends Migration
             $table->string('slug')->unique();
             $table->text('description');
             $table->text('content');
-            $table->integer('views')->unsigned();
-            $table->integer('likes')->unsigned();
-            $table->integer('dislikes')->unsigned();
-            $table->integer('section_id')->unsigned();
-            $table->integer('image_id')->unsigned();
+            $table->integer('views')->unsigned()->default(0);
+            $table->integer('likes')->unsigned()->default(0);
+            $table->integer('dislikes')->unsigned()->default(0);
+            $table->integer('section_id')->unsigned()->nullable();
+            $table->integer('image_id')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('section_id')->references('id')->on('sections')
