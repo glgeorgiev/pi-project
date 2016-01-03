@@ -1,4 +1,4 @@
-@foreach($articles as $article)
+@forelse($articles as $article)
     @if($article->section && $article->user)
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -67,4 +67,6 @@
             </div>
         </div>
     @endif
-@endforeach
+@empty
+    Няма намерени резултати
+@endforelse
