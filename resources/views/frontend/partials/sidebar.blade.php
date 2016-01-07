@@ -8,6 +8,13 @@
                 <li>
                     <a href="{{ route('section',
                         ['section_slug' => $section->slug]) }}">
+                        @if($section->image)
+                            {!! HTML::image($section->image->url,
+                            $section->title, ['class' => 'sm-image']) !!}
+                        @else
+                            {!! HTML::image('assets/img/no-image.png',
+                            $section->title, ['class' => 'sm-image']) !!}
+                        @endif
                         {{ $section->title }}
                     </a>
                 </li>
@@ -58,6 +65,13 @@
                                 'section_slug' => $most_read_article->section->slug,
                                 'article_slug' => $most_read_article->slug,
                             ]) }}">
+                                @if($most_read_article->image)
+                                    {!! HTML::image($most_read_article->image->url,
+                                    $most_read_article->title, ['class' => 'sm-image']) !!}
+                                @else
+                                    {!! HTML::image('assets/img/no-image.png',
+                                    $most_read_article->title, ['class' => 'sm-image']) !!}
+                                @endif
                                 {{ $most_read_article->title }}
                             </a>
                         </li>
@@ -81,6 +95,13 @@
                                 'section_slug' => $most_liked_article->section->slug,
                                 'article_slug' => $most_liked_article->slug,
                             ]) }}">
+                                @if($most_liked_article->image)
+                                    {!! HTML::image($most_liked_article->image->url,
+                                    $most_liked_article->title, ['class' => 'sm-image']) !!}
+                                @else
+                                    {!! HTML::image('assets/img/no-image.png',
+                                    $most_liked_article->title, ['class' => 'sm-image']) !!}
+                                @endif
                                 {{ $most_liked_article->title }}
                             </a>
                         </li>

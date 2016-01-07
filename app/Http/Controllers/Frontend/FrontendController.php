@@ -17,7 +17,7 @@ class FrontendController extends Controller
     {
         Carbon::setLocale('bg');
         View::share('menu', Menu::order()->get());
-        View::share('sections', Section::order()->get());
+        View::share('sections', Section::with('image')->order()->get());
         View::share('poll', Poll::with(['poll_answers', 'poll_answers.poll_votes'])
             ->ordered()->where('show_in_sidebar', true)->first());
         View::share('sidebar_tags', DB::table('article_tag')
@@ -26,11 +26,11 @@ class FrontendController extends Controller
             ->orderBy('article_tag.updated_at', 'desc')
             ->limit(config('constants.sidebar_tags'))
             ->distinct()->get());
-        View::share('most_read_articles', Article::with('section')
+        View::share('most_read_articles', Article::with(['section', 'image'])
             ->where('created_at', '>', Carbon::now()->subMonth())
             ->orderBy('views', 'desc')
             ->limit(config('constants.most_read_articles'))->get());
-        View::share('most_liked_articles', Article::with('section')
+        View::share('most_liked_articles', Article::with(['section', 'image'])
             ->orderBy('likes', 'desc')
             ->limit(config('constants.most_liked_articles'))->get());
     }
