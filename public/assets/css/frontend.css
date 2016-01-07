@@ -18,6 +18,10 @@
     font-size: 32px;
 }
 .sm-image {
-    max-width: 32px;
+    max-width: 32px !important;
+    margin-right: 10px;
+}
+.md-image {
+    max-width: 64px !important;
     margin-right: 10px;
 }

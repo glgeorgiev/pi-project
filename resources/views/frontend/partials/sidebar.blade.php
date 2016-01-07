@@ -67,10 +67,10 @@
                             ]) }}">
                                 @if($most_read_article->image)
                                     {!! HTML::image($most_read_article->image->url,
-                                    $most_read_article->title, ['class' => 'sm-image']) !!}
+                                    $most_read_article->title, ['class' => 'md-image']) !!}
                                 @else
                                     {!! HTML::image('assets/img/no-image.png',
-                                    $most_read_article->title, ['class' => 'sm-image']) !!}
+                                    $most_read_article->title, ['class' => 'md-image']) !!}
                                 @endif
                                 {{ $most_read_article->title }}
                             </a>
@@ -97,10 +97,10 @@
                             ]) }}">
                                 @if($most_liked_article->image)
                                     {!! HTML::image($most_liked_article->image->url,
-                                    $most_liked_article->title, ['class' => 'sm-image']) !!}
+                                    $most_liked_article->title, ['class' => 'md-image']) !!}
                                 @else
                                     {!! HTML::image('assets/img/no-image.png',
-                                    $most_liked_article->title, ['class' => 'sm-image']) !!}
+                                    $most_liked_article->title, ['class' => 'md-image']) !!}
                                 @endif
                                 {{ $most_liked_article->title }}
                             </a>
