@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{{ route('index') }}">
-                {!! HTML::image('logo.jpg', 'logo') !!}
+                {!! HTML::image('logo.png', 'logo') !!}
             </a>
         </div>
 

@@ -1,7 +1,7 @@
 <header class="header fixed-top clearfix">
     <div class="brand">
         <a href="{{ route('admin.index') }}" class="logo">
-            {!! HTML::image('logo.jpg', 'Logo') !!}
+            {!! HTML::image('logo.png', 'Logo') !!}
         </a>
         <div class="sidebar-toggle-box">
             <div class="fa fa-bars"></div>
