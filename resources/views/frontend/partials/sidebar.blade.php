@@ -85,6 +85,7 @@
                                         </small>
                                     </p>
                                 </div>
+                                <div class="clearfix"></div>
                             </a>
                         </li>
                     @endif
@@ -127,6 +128,7 @@
                                         </small>
                                     </p>
                                 </div>
+                                <div class="clearfix"></div>
                             </a>
                         </li>
                     @endif
