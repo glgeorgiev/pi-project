@@ -29,7 +29,7 @@ class Initial extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description');
-            $table->integer('image_id')->unsigned();
+            $table->integer('image_id')->unsigned()->nullable();
             $table->tinyInteger('order')->unsigned();
             $table->timestamps();
 
@@ -42,7 +42,7 @@ class Initial extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description');
-            $table->integer('image_id')->unsigned();
+            $table->integer('image_id')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('image_id')->references('id')->on('images')

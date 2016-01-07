@@ -57,7 +57,7 @@
                     </p>
                 </div>
                 <div class="col-sm-12">
-                    <p>{{ $article->description }}</p>
+                    <div class="article-description">{{ $article->description }}</div>
                     <a href="{{ route('article',
                                     ['section_slug' => $article->section->slug,
                                     'article_slug' => $article->slug]) }}">

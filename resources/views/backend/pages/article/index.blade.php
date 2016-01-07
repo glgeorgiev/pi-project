@@ -22,6 +22,8 @@
                         <th>{{ trans('article.fields.title') }}</th>
                         <th>{{ trans('article.fields.slug') }}</th>
                         <th>{{ trans('article.fields.section') }}</th>
+                        <th>{{ trans('article.fields.views') }}</th>
+                        <th>{{ trans('article.fields.likes_dislikes') }}</th>
                         <th>{{ trans('common.updated_at') }}</th>
                         <th>{{ trans('common.options') }}</th>
                     </tr>
@@ -33,6 +35,11 @@
                             <td>{{ $article->title }}</td>
                             <td>{{ $article->slug }}</td>
                             <td>{{ $article->section ? $article->section->title : '-' }}</td>
+                            <td>{{ $article->views }}</td>
+                            <td>
+                                <i class="fa fa-thumbs-up"></i> {{ $article->likes }}
+                                <i class="fa fa-thumbs-down"></i> {{ $article->dislikes }}
+                            </td>
                             <td>{{ $article->updated_at->toRfc2822String() }}</td>
                             <td>
                                 <a class="btn btn-sm btn-info"
