@@ -65,14 +65,26 @@
                                 'section_slug' => $most_read_article->section->slug,
                                 'article_slug' => $most_read_article->slug,
                             ]) }}">
-                                @if($most_read_article->image)
-                                    {!! HTML::image($most_read_article->image->url,
-                                    $most_read_article->title, ['class' => 'md-image']) !!}
-                                @else
-                                    {!! HTML::image('assets/img/no-image.png',
-                                    $most_read_article->title, ['class' => 'md-image']) !!}
-                                @endif
-                                {{ $most_read_article->title }}
+                                <div class="pull-left">
+                                    @if($most_read_article->image)
+                                        {!! HTML::image($most_read_article->image->url,
+                                        $most_read_article->title, ['class' => 'md-image']) !!}
+                                    @else
+                                        {!! HTML::image('assets/img/no-image.png',
+                                        $most_read_article->title, ['class' => 'md-image']) !!}
+                                    @endif
+                                </div>
+                                <div class="pull-right">
+                                    <h4>{{ $most_read_article->title }}</h4>
+                                    <p>
+                                        <small>
+                                            <i class="fa fa-calendar"></i>
+                                            {{ $most_read_article->created_at->format('d.m.Y') }}
+                                            <i class="fa fa-clock-o"></i>
+                                            {{ $most_read_article->created_at->format('H:i') }}
+                                        </small>
+                                    </p>
+                                </div>
                             </a>
                         </li>
                     @endif
@@ -95,14 +107,26 @@
                                 'section_slug' => $most_liked_article->section->slug,
                                 'article_slug' => $most_liked_article->slug,
                             ]) }}">
-                                @if($most_liked_article->image)
-                                    {!! HTML::image($most_liked_article->image->url,
-                                    $most_liked_article->title, ['class' => 'md-image']) !!}
-                                @else
-                                    {!! HTML::image('assets/img/no-image.png',
-                                    $most_liked_article->title, ['class' => 'md-image']) !!}
-                                @endif
-                                {{ $most_liked_article->title }}
+                                <div class="pull-left">
+                                    @if($most_liked_article->image)
+                                        {!! HTML::image($most_liked_article->image->url,
+                                        $most_liked_article->title, ['class' => 'md-image']) !!}
+                                    @else
+                                        {!! HTML::image('assets/img/no-image.png',
+                                        $most_liked_article->title, ['class' => 'md-image']) !!}
+                                    @endif
+                                </div>
+                                <div class="pull-right">
+                                    <h4>{{ $most_liked_article->title }}</h4>
+                                    <p>
+                                        <small>
+                                            <i class="fa fa-calendar"></i>
+                                            {{ $most_liked_article->created_at->format('d.m.Y') }}
+                                            <i class="fa fa-clock-o"></i>
+                                            {{ $most_liked_article->created_at->format('H:i') }}
+                                        </small>
+                                    </p>
+                                </div>
                             </a>
                         </li>
                     @endif
