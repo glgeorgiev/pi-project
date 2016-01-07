@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Poll;
 
-class PollsController extends FrontendController
+class PollController extends FrontendController
 {
     /**
      * @return \Illuminate\Http\Response

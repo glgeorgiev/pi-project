@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use App\Comment;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->redirectRoute = 'admin.comment.index';
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,72 +20,43 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $comments = Comment::getFilteredResults();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return view('backend.pages.comment.index', compact('comments'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  CommentRequest  $request
+     * @param  Comment $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CommentRequest $request, Comment $comment)
     {
-        //
+        $comment->update($request->all());
+
+        if ($request->ajax()) {
+            return response()->json([
+                'result'    => 'OK',
+                'message'   => 'Updated comment',
+                'comment'   => $comment->comment,
+            ]);
+        }
+
+        return $this->redirect();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+
+        return $this->redirect();
     }
 }

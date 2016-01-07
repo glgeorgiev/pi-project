@@ -11,6 +11,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('admin.comment.index') }}"
+                       @if(Request::segment(2) == 'comment')
+                       class="active"
+                            @endif>
+                        {!! trans('sidebar.comment') !!}
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('admin.image.index') }}"
                         @if(Request::segment(2) == 'image')
                             class="active"

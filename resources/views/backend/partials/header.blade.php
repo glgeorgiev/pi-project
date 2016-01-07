@@ -9,17 +9,22 @@
     </div>
 
     <div class="top-nav clearfix">
-        <ul class="nav pull-right top-menu">
+        <ul class="nav pull-right nav-pills">
             <li>
-                {{--<a href="{{ route('profile') }}">--}}
-                    {{--{{ trans('common.welcome',--}}
-                    {{--['name' => Auth::user()->name]) }}--}}
-                {{--</a>--}}
+                <a href="javascript:void(0);">
+                    {{ trans('common.welcome', ['name' => Auth::user()->name]) }}
+                </a>
             </li>
             <li>
-                {{--<a href="{{ route('logout') }}">--}}
-                    {{--{{ trans('common.logout') }}--}}
-                {{--</a>--}}
+                <a href="{{ route('profile',
+                    ['redirect_url' => Request::fullUrl()]) }}">
+                    {{ trans('common.profile') }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('logout') }}">
+                    {{ trans('common.logout') }}
+                </a>
             </li>
         </ul>
     </div>

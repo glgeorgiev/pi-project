@@ -6,6 +6,8 @@ Route::group(['prefix' => 'auth'], function() {
     Route::post('register',     ['as' => 'register',    'uses' => 'Auth\AuthController@postRegister']);
     Route::get('login',         ['as' => 'login',       'uses' => 'Auth\AuthController@getLogin']);
     Route::post('login',        ['as' => 'login',       'uses' => 'Auth\AuthController@postLogin']);
+    Route::get('profile',       ['as' => 'profile',     'uses' => 'Auth\AuthController@getProfile']);
+    Route::post('profile',      ['as' => 'profile',     'uses' => 'Auth\AuthController@postProfile']);
     Route::get('logout',        ['as' => 'logout',      'uses' => 'Auth\AuthController@getLogout']);
 });
 
@@ -35,7 +37,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
 
 //What every user can see
 Route::get('',                              ['as' => 'index',   'uses' => 'Frontend\IndexController@index']);
-Route::get('polls',                         ['as' => 'polls',   'uses' => 'Frontend\PollsController@index']);
+Route::get('polls',                         ['as' => 'polls',   'uses' => 'Frontend\PollController@index']);
 Route::get('tag/{tag_slug}',                ['as' => 'tag',     'uses' => 'Frontend\TagController@index']);
 Route::get('{section_slug}',                ['as' => 'section', 'uses' => 'Frontend\SectionController@index']);
 Route::get('{section_slug}/{article_slug}', ['as' => 'article', 'uses' => 'Frontend\ArticleController@index']);

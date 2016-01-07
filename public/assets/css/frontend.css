@@ -62,3 +62,11 @@ ul.article-tags > li > a:hover {
 .article-comments {
     margin-top: 15px;
 }
+.article-comment {
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.login-btn, .register-btn, .profile-btn {
+    font-size: 14px;
+}

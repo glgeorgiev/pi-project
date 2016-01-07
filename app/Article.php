@@ -71,7 +71,7 @@ class Article extends Model
             $query = $query->where('id', Request::input('id'));
         }
         if (Request::has('title')) {
-            $query = $query->where('title', 'like','%' . Request::input('title') . '%');
+            $query = $query->where('title', 'like', '%' . Request::input('title') . '%');
         }
         if (Request::has('section_id')) {
             $query = $query->where('section_id', Request::input('section_id'));

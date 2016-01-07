@@ -32,9 +32,33 @@
                     @foreach($articles as $article)
                         <tr>
                             <td>{{ $article->id }}</td>
-                            <td>{{ $article->title }}</td>
-                            <td>{{ $article->slug }}</td>
-                            <td>{{ $article->section ? $article->section->title : '-' }}</td>
+                            <td>
+                                <a href="{{ route('admin.article.edit',
+                                    ['article' => $article->id]) }}">
+                                    {{ $article->title }}
+                                </a>
+                            </td>
+                            <td>
+                                @if($article->section && $article->section->slug && $article->slug)
+                                    <a href="{{ route('article',
+                                        ['section_slug' => $article->section->slug,
+                                        'article_slug' => $article->slug]) }}">
+                                        {{ $article->slug }}
+                                    </a>
+                                @else
+                                    {{ $article->slug }}
+                                @endif
+                            </td>
+                            <td>
+                                @if($article->section)
+                                    <a href="{{ route('admin.section.edit',
+                                        ['section' => $article->section->id]) }}">
+                                        {{ $article->section->title }}
+                                    </a>
+                                @else
+                                    -
+                                @endif
+                            </td>
                             <td>{{ $article->views }}</td>
                             <td>
                                 <i class="fa fa-thumbs-up"></i> {{ $article->likes }}
