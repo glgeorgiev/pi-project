@@ -6,7 +6,7 @@ class Comment extends Model
 {
     protected $table = 'comments';
 
-    protected $fillable = [];
+    protected $fillable = ['comment', 'article_id'];
 
     public function article()
     {

@@ -12,6 +12,31 @@ jQuery(function($) {
                     $('.article-likes').text(data.likes);
                     $('.article-dislikes').text(data.dislikes);
                 }
+            },
+            error: function(error) {
+                if (error.hasOwnProperty('responseJSON') &&
+                    error.responseJSON.hasOwnProperty('message')) {
+                    $('.article-likes-dislikes-error').text(error.responseJSON.message);
+                }
+            }
+        });
+    });
+    $('.comment-form').on('submit', function(e) {
+        e.preventDefault();
+        var $this = $(this);
+        $.ajax({
+            method: $this.attr('method'),
+            url: $this.attr('action'),
+            data: $this.serialize(),
+            success: function(html) {
+                $('.article-comments-container').html(html);
+                $(':input[name="comment"]').val('');
+            },
+            error: function(error) {
+                if (error.hasOwnProperty('responseJSON') &&
+                    error.responseJSON.hasOwnProperty('message')) {
+                    $('.article-comment-error').text(error.responseJSON.message);
+                }
             }
         });
     });

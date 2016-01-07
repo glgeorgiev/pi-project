@@ -64,20 +64,51 @@
                             ['type' => 'submit', 'class' => 'form-control']) !!}
                         </div>
                     {!! Form::close() !!}
+                    <div class="article-likes-dislikes-error"></div>
                 </div>
             </div>
             @if(isset($tags) && count($tags))
-                <ul class="nav nav-tabs article-tags">
-                    @foreach($tags as $tag)
-                        <li>
-                            <a href="{{ route('tag',
-                                ['tag_slug' => $tag->slug]) }}">
-                                {{ $tag->title }}
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
+                <div>
+                    Етикети:
+                    <ul class="nav nav-tabs article-tags">
+                        @foreach($tags as $tag)
+                            <li>
+                                <a href="{{ route('tag',
+                                    ['tag_slug' => $tag->slug]) }}">
+                                    {{ $tag->title }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             @endif
+            <div class="panel panel-default article-comments">
+                <div class="panel-heading">
+                    <h4>Коментари</h4>
+                </div>
+                <div class="panel-body">
+                    @if(Auth::check())
+                        @include('frontend.partials.comment_form')
+                    @else
+                        <div class="col-sm-12 text-center">
+                            <strong>Трябва да сте логнати в профила си за да коментирате!</strong>
+                        </div>
+                        <div class="col-sm-12">
+                            <a class="col-sm-4 btn btn-success"
+                               href="{{ route('login', ['redirect_url' => Request::fullUrl()]) }}">
+                                Вход
+                            </a>
+                            <a class="col-sm-4 col-sm-offset-4 btn btn-info"
+                               href="{{ route('register', ['redirect_url' => Request::fullUrl()]) }}">
+                                Регистрация
+                            </a>
+                        </div>
+                    @endif
+                    <div class="article-comments-container">
+                        @include('frontend.partials.comments')
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

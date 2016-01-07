@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Article;
+use App\Http\Requests\ArticleCommentRequest;
 use App\Http\Requests\ArticleRateRequest;
 use App\Section;
+use Auth;
 
 class ArticleController extends FrontendController
 {
@@ -33,8 +35,33 @@ class ArticleController extends FrontendController
         $article->views++;
         $article->save();
 
+        $article->comments->load('user');
+
         return view('frontend.pages.article',
             compact('section', 'article', 'tags'));
+    }
+
+    public function comment(ArticleCommentRequest $request)
+    {
+        if (Auth::guest()) {
+            return response()->json([
+                'result'    => 'error',
+                'message'   => 'За да коментирате, трябва да сте влезли в профила си!'
+            ], 400);
+        }
+
+        Auth::user()->comments()->create($request->all());
+
+        $article = Article::find($request->input('article_id'));
+
+        if (is_null($article)) {
+            return response()->json([
+                'result'    => 'error',
+                'message'   => 'Статията не съществува!'
+            ], 422);
+        }
+
+        return view('frontend.partials.comments', compact('article'));
     }
 
     public function rate(ArticleRateRequest $request)
