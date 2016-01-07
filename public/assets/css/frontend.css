@@ -70,3 +70,10 @@ ul.article-tags > li > a:hover {
 .login-btn, .register-btn, .profile-btn {
     font-size: 14px;
 }
+.navbar-brand {
+    padding: 10px 15px;
+}
+.navbar-brand > img {
+    max-width: 200px;
+    max-height: 40px;
+}
