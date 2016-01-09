@@ -1,18 +1,23 @@
 <?php
 
-//Register and login
+//Register, login, logout and profile
 Route::group(['prefix' => 'auth'], function() {
-    Route::get('register',      ['as' => 'register',    'uses' => 'Auth\AuthController@getRegister']);
-    Route::post('register',     ['as' => 'register',    'uses' => 'Auth\AuthController@postRegister']);
-    Route::get('login',         ['as' => 'login',       'uses' => 'Auth\AuthController@getLogin']);
-    Route::post('login',        ['as' => 'login',       'uses' => 'Auth\AuthController@postLogin']);
-    Route::get('profile',       ['as' => 'profile',     'uses' => 'Auth\AuthController@getProfile']);
-    Route::post('profile',      ['as' => 'profile',     'uses' => 'Auth\AuthController@postProfile']);
-    Route::get('logout',        ['as' => 'logout',      'uses' => 'Auth\AuthController@getLogout']);
+    Route::group(['middleware' => 'guest'], function() {
+        Route::get('register',      ['as' => 'register',    'uses' => 'Auth\AuthController@getRegister']);
+        Route::post('register',     ['as' => 'register',    'uses' => 'Auth\AuthController@postRegister']);
+        Route::get('login',         ['as' => 'login',       'uses' => 'Auth\AuthController@getLogin']);
+        Route::post('login',        ['as' => 'login',       'uses' => 'Auth\AuthController@postLogin']);
+
+    });
+    Route::group(['middleware' => 'auth'], function() {
+        Route::get('profile',       ['as' => 'profile',     'uses' => 'Auth\AuthController@getProfile']);
+        Route::post('profile',      ['as' => 'profile',     'uses' => 'Auth\AuthController@postProfile']);
+        Route::get('logout',        ['as' => 'logout',      'uses' => 'Auth\AuthController@getLogout']);
+    });
 });
 
 //Forgotten password
-Route::group(['prefix' => 'password'], function() {
+Route::group(['prefix' => 'password', 'middleware' => 'guest'], function() {
     Route::get('email',         ['as' => 'email',       'uses' => 'Auth\PasswordController@getEmail']);
     Route::post('email',        ['as' => 'email',       'uses' => 'Auth\PasswordController@postEmail']);
     Route::get('reset/{token}', ['as' => 'reset',       'uses' => 'Auth\PasswordController@getReset']);
@@ -38,10 +43,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
 //What every user can see
 Route::get('',                              ['as' => 'index',   'uses' => 'Frontend\IndexController@index']);
 Route::get('polls',                         ['as' => 'polls',   'uses' => 'Frontend\PollController@index']);
+//TODO: custom pages, like polls, example contacts, for us
 Route::get('tag/{tag_slug}',                ['as' => 'tag',     'uses' => 'Frontend\TagController@index']);
 Route::get('{section_slug}',                ['as' => 'section', 'uses' => 'Frontend\SectionController@index']);
 Route::get('{section_slug}/{article_slug}', ['as' => 'article', 'uses' => 'Frontend\ArticleController@index']);
 
+//User actions
 Route::group(['middleware' => 'ajax'], function() {
     Route::post('comment',  ['as' => 'comment', 'uses' => 'Frontend\ArticleController@comment',
         'middleware' => ['auth', 'not_banned']]);

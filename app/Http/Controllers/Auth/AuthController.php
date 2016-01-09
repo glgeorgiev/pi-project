@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Requests\ProfileRequest;
 use App\User;
-use Validator;
-use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use Validator;
 
-class AuthController extends Controller
+class AuthController extends FrontendController
 {
     /*
     |--------------------------------------------------------------------------
@@ -21,16 +24,61 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use ThrottlesLogins, AuthenticatesAndRegistersUsers {
+        AuthenticatesAndRegistersUsers::postRegister    as traitPostRegister;
+        AuthenticatesAndRegistersUsers::postLogin       as traitPostLogin;
+    }
 
     protected $redirectPath = '/';
+    protected $redirectRoute = '/';
 
-    /**
-     * Create a new authentication controller instance.
-     */
-    public function __construct()
+    public function postRegister(Request $request)
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->traitPostRegister($request);
+
+        if ($request->has('redirect_url')) {
+            return redirect($request->input('redirect_url'));
+        }
+
+        return $this->redirect();
+    }
+
+    public function postLogin(Request $request)
+    {
+        $response = $this->traitPostRegister($request);
+
+        if (Auth::check() && $request->has('redirect_url')) {
+            return redirect($request->input('redirect_url'));
+        }
+
+        return $response;
+    }
+
+    public function getProfile()
+    {
+        return view('auth.profile');
+    }
+
+    public function postProfile(ProfileRequest $request)
+    {
+        Auth::user()->update($request->all());
+
+        if ($request->has('redirect_url')) {
+            return redirect($request->input('redirect_url'));
+        }
+
+        return $this->redirect();
+    }
+
+    public function getLogout()
+    {
+        Auth::logout();
+
+        if (request()->has('redirect_url')) {
+            return redirect(request()->input('redirect_url'));
+        }
+
+        return $this->redirect();
     }
 
     /**

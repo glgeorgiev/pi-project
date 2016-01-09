@@ -36,13 +36,15 @@
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a href="{{ route('profile',
-                                    ['redirect_url' => Request::fullUrl()]) }}">
+                                    ['redirect_url' => Request::has('redirect_url') ?
+                                    Request::input('redirect_url') : Request::fullUrl()]) }}">
                                     Профил
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ route('logout',
-                                    ['redirect_url' => Request::fullUrl()]) }}">
+                                    ['redirect_url' => Request::has('redirect_url') ?
+                                    Request::input('redirect_url') : Request::fullUrl()]) }}">
                                     Изход
                                 </a>
                             </li>
@@ -51,13 +53,15 @@
                 @else
                     <li>
                         <a class="login-btn" href="{{ route('login',
-                            ['redirect_url' => Request::fullUrl()]) }}">
+                            ['redirect_url' => Request::has('redirect_url') ?
+                            Request::input('redirect_url') : Request::fullUrl()]) }}">
                             Вход
                         </a>
                     </li>
                     <li>
                         <a class="register-btn" href="{{ route('register',
-                            ['redirect_url' => Request::fullUrl()]) }}">
+                            ['redirect_url' => Request::has('redirect_url') ?
+                            Request::input('redirect_url') : Request::fullUrl()]) }}">
                             Регистрация
                         </a>
                     </li>

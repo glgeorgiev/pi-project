@@ -2,10 +2,15 @@
     @forelse($article->comments as $comment)
         @if($comment->user)
             <div class="col-sm-12 article-comment">
-                <div class="col-sm-4">
-                    {{ $comment->user->name }}
+                <div class="col-sm-3">
+                    <div class="col-sm-12 text-left">
+                        {{ $comment->user->name }}
+                    </div>
+                    <div class="col-sm-12 text-right">
+                        {{ $comment->created_at->diffForHumans() }}
+                    </div>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-9">
                     {{ $comment->comment }}
                 </div>
             </div>

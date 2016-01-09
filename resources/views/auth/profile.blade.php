@@ -3,12 +3,14 @@
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h1 class="main-heading">Възстановяване на парола</h1>
+            <h1 class="main-heading">Профил</h1>
         </div>
         <div class="panel-body">
-            {!! Form::open(['method' => 'POST',
-            'url' => route('reset')]) !!}
-            {!! Form::hidden('token', $token) !!}
+            {!! Form::open(['method' => 'POST']) !!}
+            @if(Request::has('redirect_url'))
+                {!! Form::hidden('redirect_url',
+                Request::input('redirect_url')) !!}
+            @endif
 
             @include('frontend.partials.errors')
 
@@ -16,7 +18,16 @@
                 {!! Form::label('email', 'Email',
                 ['class' => 'col-sm-3 control-label text-right']) !!}
                 <div class="col-sm-9">
-                    {!! Form::email('email', null,
+                    {!! Form::email('email', Auth::user()->email,
+                    ['class' => 'form-control', 'disabled' => 'disabled']) !!}
+                </div>
+            </div>
+
+            <div class="form-group clearfix">
+                {!! Form::label('name', 'Име',
+                ['class' => 'col-sm-3 control-label text-right']) !!}
+                <div class="col-sm-9">
+                    {!! Form::text('name', Auth::user()->name,
                     ['class' => 'form-control', 'required' => 'required']) !!}
                 </div>
             </div>
@@ -26,7 +37,7 @@
                 ['class' => 'col-sm-3 control-label text-right']) !!}
                 <div class="col-sm-9">
                     {!! Form::password('password',
-                    ['class' => 'form-control', 'required' => 'required']) !!}
+                    ['class' => 'form-control']) !!}
                 </div>
             </div>
 
@@ -35,13 +46,13 @@
                 ['class' => 'col-sm-3 control-label text-right']) !!}
                 <div class="col-sm-9">
                     {!! Form::password('password_confirmation',
-                    ['class' => 'form-control', 'required' => 'required']) !!}
+                    ['class' => 'form-control']) !!}
                 </div>
             </div>
 
             <div class="form-group clearfix">
                 <div class="col-sm-offset-3 col-sm-9">
-                    {!! Form::submit('Смени парола',
+                    {!! Form::submit('Промени профила си',
                     ['class' => 'btn btn-success col-sm-12']) !!}
                 </div>
             </div>
