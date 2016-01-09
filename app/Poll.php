@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Request;
+
 class Poll extends Model
 {
     protected $table = 'polls';
@@ -16,5 +18,19 @@ class Poll extends Model
     public function poll_votes()
     {
         return $this->hasMany(PollVote::class);
+    }
+
+    public static function getFilteredResults()
+    {
+        $query = static::ordered();
+
+        if (Request::has('id')) {
+            $query = $query->where('id', Request::input('id'));
+        }
+        if (Request::has('title')) {
+            $query = $query->where('title', 'like','%' . Request::input('title') . '%');
+        }
+
+        return $query->with('poll_answers')->paginate(config('constants.per_page'));
     }
 }

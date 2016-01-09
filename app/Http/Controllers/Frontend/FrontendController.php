@@ -18,7 +18,7 @@ class FrontendController extends Controller
         Carbon::setLocale('bg');
         View::share('menu', Menu::order()->get());
         View::share('sections', Section::with('image')->order()->get());
-        View::share('poll', Poll::with(['poll_answers', 'poll_answers.poll_votes'])
+        View::share('sidebar_poll', Poll::with(['poll_answers', 'poll_answers.poll_votes'])
             ->ordered()->where('show_in_sidebar', true)->first());
         View::share('sidebar_tags', DB::table('article_tag')
             ->select(['tags.id', 'tags.title', 'tags.slug'])

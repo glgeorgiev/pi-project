@@ -77,3 +77,15 @@ ul.article-tags > li > a:hover {
     max-width: 200px;
     max-height: 40px;
 }
+.all-polls-btn {
+    color: #fff;
+}
+.all-polls-btn:hover {
+    color: #fff;
+}
+.single-poll {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}

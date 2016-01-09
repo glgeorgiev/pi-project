@@ -40,4 +40,22 @@ jQuery(function($) {
             }
         });
     });
+    $('.poll-form').on('submit', function(e) {
+        e.preventDefault();
+        var $this = $(this);
+        $.ajax({
+            method: $this.attr('method'),
+            url: $this.attr('action'),
+            data: $this.serialize(),
+            success: function(html) {
+                $this.get(0).outerHTML = html;
+            },
+            error: function(error) {
+                if (error.hasOwnProperty('responseJSON') &&
+                    error.responseJSON.hasOwnProperty('message')) {
+                    $('.poll-error').text(error.responseJSON.message);
+                }
+            }
+        });
+    });
 });

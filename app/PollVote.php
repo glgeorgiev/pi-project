@@ -6,7 +6,7 @@ class PollVote extends Model
 {
     protected $table = 'poll_votes';
 
-    protected $fillable = [];
+    protected $fillable = ['ip', 'poll_id', 'poll_answer_id'];
 
     public function poll()
     {

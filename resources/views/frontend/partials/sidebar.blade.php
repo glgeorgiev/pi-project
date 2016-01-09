@@ -22,19 +22,17 @@
         </ul>
     </div>
 </div>
-@if(isset($poll))
+@if(isset($sidebar_poll))
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">Анкета</h3>
+            <h3 class="panel-title pull-left">Анкета</h3>
+            <a class="pull-right all-polls-btn" href="{{ route('polls') }}">
+                Виж всички
+            </a>
+            <div class="clearfix"></div>
         </div>
         <div class="panel-body">
-            <h4>{{ $poll->title }}</h4>
-            <p>{{ $poll->description }}</p>
-            @foreach($poll->poll_answers as $answer)
-                {!! Form::checkbox('answer', $answer->id, false,
-                ['id' => 'answer_' . $answer->id]) !!}
-                {!! Form::label('answer_' . $answer->id, $answer->answer) !!}
-            @endforeach
+            @include('frontend.partials.poll', ['poll' => $sidebar_poll])
         </div>
     </div>
 @endif
