@@ -43,11 +43,35 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('admin.poll.index') }}"
+                       @if(Request::segment(2) == 'poll')
+                       class="active"
+                            @endif>
+                        {!! trans('sidebar.poll') !!}
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('admin.user.index') }}"
                        @if(Request::segment(2) == 'user')
                        class="active"
                             @endif>
                         {!! trans('sidebar.user') !!}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.ban_user.index') }}"
+                       @if(Request::segment(2) == 'ban_user')
+                       class="active"
+                            @endif>
+                        {!! trans('sidebar.ban_user') !!}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.ban_ip.index') }}"
+                       @if(Request::segment(2) == 'ban_ip')
+                       class="active"
+                            @endif>
+                        {!! trans('sidebar.ban_ip') !!}
                     </a>
                 </li>
                 <li>

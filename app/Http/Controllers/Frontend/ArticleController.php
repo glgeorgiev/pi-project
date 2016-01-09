@@ -43,13 +43,6 @@ class ArticleController extends FrontendController
 
     public function comment(ArticleCommentRequest $request)
     {
-        if (Auth::guest()) {
-            return response()->json([
-                'result'    => 'error',
-                'message'   => 'За да коментирате, трябва да сте влезли в профила си!'
-            ], 400);
-        }
-
         Auth::user()->comments()->create($request->all());
 
         $article = Article::find($request->input('article_id'));

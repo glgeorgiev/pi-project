@@ -31,6 +31,7 @@ class Poll extends Model
             $query = $query->where('title', 'like','%' . Request::input('title') . '%');
         }
 
-        return $query->with('poll_answers')->paginate(config('constants.per_page'));
+        return $query->with(['poll_answers', 'poll_votes'])
+            ->paginate(config('constants.per_page'));
     }
 }

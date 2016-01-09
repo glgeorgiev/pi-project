@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\BanIp;
+use App\BanUser;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BanIpRequest;
+use App\Http\Requests\BanUserRequest;
+use App\User;
 
-class BanIpController extends Controller
+class BanUserController extends Controller
 {
     public function __construct()
     {
-        $this->redirectRoute = 'admin.ban_ip.index';
+        $this->redirectRoute = 'admin.ban_user.index';
     }
 
     /**
@@ -20,9 +21,11 @@ class BanIpController extends Controller
      */
     public function index()
     {
-        $ban_ips = BanIp::getFilteredResults();
+        $ban_users = BanUser::getFilteredResults();
 
-        return view('backend.pages.ban_ip.index', compact('ban_ips'));
+        $user_list = User::where('is_admin', false)->lists('email', 'id')->toArray();
+
+        return view('backend.pages.ban_user.index', compact('ban_users', 'user_list'));
     }
 
     /**
@@ -32,18 +35,20 @@ class BanIpController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.ban_ip.create');
+        $user_list = User::where('is_admin', false)->lists('email', 'id')->toArray();
+
+        return view('backend.pages.ban_user.create', compact('user_list'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  BanIpRequest  $request
+     * @param  BanUserRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BanIpRequest $request)
+    public function store(BanUserRequest $request)
     {
-        BanIp::create($request->all());
+        BanUser::create($request->all());
 
         return $this->redirect();
     }
@@ -51,10 +56,10 @@ class BanIpController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  BanIp $banUser
+     * @param  BanUser $banUser
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BanIp $banUser)
+    public function destroy(BanUser $banUser)
     {
         $banUser->delete();
 

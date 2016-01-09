@@ -82,7 +82,7 @@
                                    data-url="{{ route('admin.comment.destroy',
                                     ['comment' => $comment->id]) }}"
                                    data-text="{{ trans('common.destroy_comment',
-                                   ['id' => $comment->id, 'title' => $comment->title]) }}">
+                                   ['id' => $comment->id]) }}">
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                             </td>

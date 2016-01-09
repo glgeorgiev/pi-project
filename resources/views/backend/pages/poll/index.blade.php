@@ -21,7 +21,8 @@
                         <th>{{ trans('common.id') }}</th>
                         <th>{{ trans('poll.fields.title') }}</th>
                         <th>{{ trans('poll.fields.show_in_sidebar') }}</th>
-                        <th>{{ trans('poll.fields.answers') }}</th>
+                        <th>{{ trans('poll.answers') }}</th>
+                        <th>{{ trans('poll.total_votes') }}</th>
                         <th>{{ trans('common.updated_at') }}</th>
                         <th>{{ trans('common.options') }}</th>
                     </tr>
@@ -39,6 +40,7 @@
                                 @endif
                             </td>
                             <td>{{ count($poll->poll_answers) }}</td>
+                            <td>{{ count($poll->poll_votes) }}</td>
                             <td>{{ $poll->updated_at->toRfc2822String() }}</td>
                             <td>
                                 <a class="btn btn-sm btn-info"

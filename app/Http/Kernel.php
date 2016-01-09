@@ -31,5 +31,6 @@ class Kernel extends HttpKernel
         'guest'         => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'admin'         => \App\Http\Middleware\CheckAdmin::class,
         'ajax'          => \App\Http\Middleware\CheckAjax::class,
+        'not_banned'    => \App\Http\Middleware\CheckBanned::class,
     ];
 }

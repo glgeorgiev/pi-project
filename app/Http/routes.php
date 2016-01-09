@@ -24,7 +24,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::get('',                  ['as' => 'admin.index',   'uses' => 'Backend\IndexController@index']);
 
     Route::resource('article',      'Backend\ArticleController');
-    Route::resource('ban_email',    'Backend\BanEmailController',   ['except'   => ['show', 'edit', 'update']]);
+    Route::resource('ban_user',     'Backend\BanUserController',    ['except'   => ['show', 'edit', 'update']]);
     Route::resource('ban_ip',       'Backend\BanIpController',      ['except'   => ['show', 'edit', 'update']]);
     Route::resource('comment',      'Backend\CommentController',    ['only'     => ['index', 'update', 'destroy']]);
     Route::resource('image',        'Backend\ImageController');
@@ -43,7 +43,8 @@ Route::get('{section_slug}',                ['as' => 'section', 'uses' => 'Front
 Route::get('{section_slug}/{article_slug}', ['as' => 'article', 'uses' => 'Frontend\ArticleController@index']);
 
 Route::group(['middleware' => 'ajax'], function() {
-    Route::post('comment',  ['as' => 'comment', 'uses' => 'Frontend\ArticleController@comment']);
+    Route::post('comment',  ['as' => 'comment', 'uses' => 'Frontend\ArticleController@comment',
+        'middleware' => ['auth', 'not_banned']]);
     Route::post('vote',     ['as' => 'vote',    'uses' => 'Frontend\PollController@vote']);
     Route::post('rate',     ['as' => 'rate',    'uses' => 'Frontend\ArticleController@rate']);
 });
