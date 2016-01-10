@@ -56,3 +56,31 @@
         ['class' => 'btn btn-success col-sm-12']) !!}
     </div>
 @endif
+
+@section('footer_script')
+    <script>
+        jQuery(function($) {
+            $('.user-form').validate({
+                rules: {
+                    name: {
+                        required: true,
+                        maxlength: 255
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                        maxlength: 255,
+                        remote: '{{ route('admin.validate.user.email') }}'
+                    },
+                    password: {
+                        minlength: 6
+
+                    },
+                    password_confirmation: {
+                        equalTo: 'input[name="password"]'
+                    }
+                }
+            });
+        });
+    </script>
+@endsection

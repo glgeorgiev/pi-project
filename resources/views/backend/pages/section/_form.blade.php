@@ -43,4 +43,25 @@
 
 @section('footer_script')
     {!! HTML::script('assets/js/images.js') !!}
+    <script>
+        jQuery(function($) {
+            $('.section-form').validate({
+                rules: {
+                    title: {
+                        required: true,
+                        maxlength: 255
+                    },
+                    slug: {
+                        required: true,
+                        maxlength: 255,
+                        remote: '{{ route('admin.validate.section.slug') }}'
+                    },
+                    order: {
+                        required: true,
+                        digits: true
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

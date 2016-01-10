@@ -15,7 +15,8 @@
             </header>
             <div class="panel-body">
                 {!! Form::model($menu, ['method' => 'PATCH', 'files' => true,
-                    'url' => route('admin.menu.update', ['menu' => $menu])]) !!}
+                    'url' => route('admin.menu.update', ['menu' => $menu]),
+                    'class' => 'menu-form']) !!}
                     @include('backend.pages.menu._form')
                 {!! Form::close() !!}
             </div>

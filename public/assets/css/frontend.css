@@ -67,6 +67,9 @@ ul.article-tags > li > a:hover {
     border: 1px solid #ddd;
     border-radius: 4px;
 }
+.article-comment-text {
+    white-space: pre-line;
+}
 .login-btn, .register-btn, .profile-btn {
     font-size: 14px;
 }

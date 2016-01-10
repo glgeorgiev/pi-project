@@ -7,7 +7,7 @@
         </div>
         <div class="panel-body">
             {!! Form::open(['method' => 'POST',
-            'url' => route('reset')]) !!}
+            'url' => route('reset'), 'class' => 'reset-form']) !!}
             {!! Form::hidden('token', $token) !!}
 
             @include('frontend.partials.errors')

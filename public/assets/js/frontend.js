@@ -39,6 +39,7 @@ jQuery(function($) {
             success: function(html) {
                 $('.article-comments-container').html(html);
                 $(':input[name="comment"]').val('');
+                $('.article-comment-error').text('Коментарът беше успешно публикуван!');
             },
             error: function(error) {
                 if (error.hasOwnProperty('responseJSON') &&
@@ -65,5 +66,70 @@ jQuery(function($) {
                 }
             }
         });
+    });
+    $('.comment-form').validate({
+        rules: {
+            comment: {
+                required: true
+            }
+        }
+    });
+    $('.register-form').validate({
+        rules: {
+            email: {
+                required: true,
+                email: true,
+                maxlength: 255
+            },
+            name: {
+                required: true,
+                maxlength: 255
+            },
+            password: {
+                required: true,
+                minlength: 6
+            },
+            password_confirmation: {
+                equalTo: 'input[name="password"]'
+            }
+        }
+    });
+    $('.login-form').validate({
+        rules: {
+            email: {
+                required: true,
+                email: true,
+                maxlength: 255
+            },
+            password: {
+                required: true,
+                minlength: 6
+            }
+        }
+    });
+    $('.email-form').validate({
+        rules: {
+            email: {
+                required: true,
+                email: true,
+                maxlength: 255
+            }
+        }
+    });
+    $('.reset-form').validate({
+        rules: {
+            email: {
+                required: true,
+                email: true,
+                maxlength: 255
+            },
+            password: {
+                required: true,
+                minlength: 6
+            },
+            password_confirmation: {
+                equalTo: 'input[name="password"]'
+            }
+        }
     });
 });

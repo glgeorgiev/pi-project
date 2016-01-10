@@ -15,7 +15,8 @@
             </header>
             <div class="panel-body">
                 {!! Form::model($article, ['method' => 'PATCH', 'files' => true,
-                    'url' => route('admin.article.update', ['article' => $article])]) !!}
+                    'url' => route('admin.article.update', ['article' => $article]),
+                    'class' => 'article-form']) !!}
                     @include('backend.pages.article._form')
                 {!! Form::close() !!}
             </div>

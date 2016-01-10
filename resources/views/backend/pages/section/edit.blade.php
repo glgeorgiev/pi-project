@@ -15,7 +15,8 @@
             </header>
             <div class="panel-body">
                 {!! Form::model($section, ['method' => 'PATCH', 'files' => true,
-                    'url' => route('admin.section.update', ['section' => $section])]) !!}
+                    'url' => route('admin.section.update', ['section' => $section]),
+                    'class' => 'section-form']) !!}
                     @include('backend.pages.section._form')
                 {!! Form::close() !!}
             </div>

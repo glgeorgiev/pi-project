@@ -15,7 +15,8 @@
             </header>
             <div class="panel-body">
                 {!! Form::open(['method' => 'POST', 'files' => true,
-                    'url' => route('admin.section.store')]) !!}
+                    'url' => route('admin.section.store'),
+                    'class' => 'section-form']) !!}
                     @include('backend.pages.section._form')
                 {!! Form::close() !!}
             </div>

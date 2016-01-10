@@ -25,3 +25,18 @@
         ['class' => 'btn btn-success col-sm-12']) !!}
     </div>
 @endif
+
+@section('footer_script')
+    <script>
+        jQuery(function($) {
+            $('.image-form').validate({
+                rules: {
+                    title: {
+                        required: true,
+                        maxlength: 255
+                    }
+                }
+            });
+        });
+    </script>
+@endsection

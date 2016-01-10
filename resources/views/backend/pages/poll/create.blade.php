@@ -15,7 +15,8 @@
             </header>
             <div class="panel-body">
                 {!! Form::open(['method' => 'POST', 'files' => true,
-                    'url' => route('admin.poll.store')]) !!}
+                    'url' => route('admin.poll.store'),
+                    'class' => 'poll-form']) !!}
                     @include('backend.pages.poll._form')
                 {!! Form::close() !!}
             </div>

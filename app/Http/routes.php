@@ -40,6 +40,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::resource('section',      'Backend\SectionController');
     Route::resource('tag',          'Backend\TagController');
     Route::resource('user',         'Backend\UserController');
+
+    Route::group(['prefix' => 'validate', 'middleware' => 'ajax'], function() {
+        Route::get('article/slug', ['as' => 'admin.validate.article.slug',
+            'uses' => 'Validation\ArticleController@slug']);
+        Route::get('section/slug', ['as' => 'admin.validate.section.slug',
+            'uses' => 'Validation\SectionController@slug']);
+        Route::get('tag/slug', ['as' => 'admin.validate.tag.slug',
+            'uses' => 'Validation\TagController@slug']);
+        Route::get('user/email', ['as' => 'admin.validate.user.email',
+            'uses' => 'Validation\UserController@email']);
+    });
 });
 
 //What every user can see

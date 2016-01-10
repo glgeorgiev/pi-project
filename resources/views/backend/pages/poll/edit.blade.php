@@ -15,7 +15,8 @@
             </header>
             <div class="panel-body">
                 {!! Form::model($poll, ['method' => 'PATCH', 'files' => true,
-                    'url' => route('admin.poll.update', ['poll' => $poll])]) !!}
+                    'url' => route('admin.poll.update', ['poll' => $poll]),
+                    'class' => 'poll-form']) !!}
                     @include('backend.pages.poll._form')
                 {!! Form::close() !!}
             </div>

@@ -15,7 +15,8 @@
             </header>
             <div class="panel-body">
                 {!! Form::model($tag, ['method' => 'PATCH', 'files' => true,
-                    'url' => route('admin.tag.update', ['tag' => $tag])]) !!}
+                    'url' => route('admin.tag.update', ['tag' => $tag]),
+                    'class' => 'tag-form']) !!}
                     @include('backend.pages.tag._form')
                 {!! Form::close() !!}
             </div>

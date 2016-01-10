@@ -15,7 +15,8 @@
             </header>
             <div class="panel-body">
                 {!! Form::open(['method' => 'POST', 'files' => true,
-                    'url' => route('admin.image.store')]) !!}
+                    'url' => route('admin.image.store'),
+                    'class' => 'image-form']) !!}
                     @include('backend.pages.image._form')
                 {!! Form::close() !!}
             </div>

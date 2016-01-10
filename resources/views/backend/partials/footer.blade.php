@@ -8,5 +8,9 @@
 {!! HTML::script('assets/js/fileinput.js') !!}
 {!! HTML::script('assets/js/jquery.nicescroll.js') !!}
 {!! HTML::script('assets/js/jquery.tagsinput.min.js') !!}
+{!! HTML::script('assets/js/jquery.validate.min.js') !!}
+{!! HTML::script('assets/js/jquery.validate.messages_bg.min.js') !!}
+
 {!! HTML::script('assets/js/scripts.js') !!}
+
 {!! HTML::script('assets/js/backend.js') !!}

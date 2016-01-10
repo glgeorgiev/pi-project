@@ -19,7 +19,7 @@
                         {{ $comment->created_at->diffForHumans() }}
                     </div>
                 </div>
-                <div class="col-sm-9">
+                <div class="col-sm-9 article-comment-text">
                     {{ $comment->comment }}
                 </div>
             </div>

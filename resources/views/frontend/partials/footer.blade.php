@@ -23,4 +23,7 @@
     ['integrity' => 'sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS',
     'crossorigin' => 'anonymous']) !!}
 {!! HTML::script('assets/js/fileinput.js') !!}
+{!! HTML::script('assets/js/jquery.validate.min.js') !!}
+{!! HTML::script('assets/js/jquery.validate.messages_bg.min.js') !!}
+
 {!! HTML::script('assets/js/frontend.js') !!}

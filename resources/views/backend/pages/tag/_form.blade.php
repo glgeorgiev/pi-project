@@ -37,4 +37,21 @@
 
 @section('footer_script')
     {!! HTML::script('assets/js/images.js') !!}
+    <script>
+        jQuery(function($) {
+            $('.tag-form').validate({
+                rules: {
+                    title: {
+                        required: true,
+                        maxlength: 255
+                    },
+                    slug: {
+                        required: true,
+                        maxlength: 255,
+                        remote: '{{ route('admin.validate.tag.slug') }}'
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

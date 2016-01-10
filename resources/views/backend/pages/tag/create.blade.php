@@ -15,7 +15,8 @@
             </header>
             <div class="panel-body">
                 {!! Form::open(['method' => 'POST', 'files' => true,
-                    'url' => route('admin.tag.store')]) !!}
+                    'url' => route('admin.tag.store'),
+                    'class' => 'tag-form']) !!}
                     @include('backend.pages.tag._form')
                 {!! Form::close() !!}
             </div>

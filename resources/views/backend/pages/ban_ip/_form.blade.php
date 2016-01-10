@@ -28,9 +28,19 @@
             $('#permanent_ban').on('change', function() {
                 $(':input[name="until"]').attr('disabled', $(this).is(':checked'));
             });
-            $('form').on('submit', function() {
-                if ($(':input[name="until"]').val() === '') {
-                    $(':input[name="until"]').attr('disabled', true);
+            $('.ban_ip-form').validate({
+                submitHandler: function(form) {
+                    var $until = $(':input[name="until"]');
+                    if ($until.val() === '') {
+                        $until.attr('disabled', true);
+                    }
+                    form.submit();
+                },
+                rules: {
+                    ip: {
+                        required: true,
+                        maxlength: 15
+                    }
                 }
             });
         });

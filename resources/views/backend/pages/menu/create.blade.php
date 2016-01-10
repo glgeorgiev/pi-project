@@ -15,7 +15,8 @@
             </header>
             <div class="panel-body">
                 {!! Form::open(['method' => 'POST', 'files' => true,
-                    'url' => route('admin.menu.store')]) !!}
+                    'url' => route('admin.menu.store'),
+                    'class' => 'menu-form']) !!}
                     @include('backend.pages.menu._form')
                 {!! Form::close() !!}
             </div>

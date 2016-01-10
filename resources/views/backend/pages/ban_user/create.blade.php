@@ -15,7 +15,8 @@
             </header>
             <div class="panel-body">
                 {!! Form::open(['method' => 'POST', 'files' => true,
-                    'url' => route('admin.ban_user.store')]) !!}
+                    'url' => route('admin.ban_user.store'),
+                    'class' => 'ban_user-form']) !!}
                     @include('backend.pages.ban_user._form')
                 {!! Form::close() !!}
             </div>

@@ -4,7 +4,7 @@
         {!! Form::hidden('article_id', $article->id) !!}
         <div class="form-group">
             {!! Form::textarea('comment', null,
-            ['class' => 'form-control', 'rows' => 3]) !!}
+            ['class' => 'form-control', 'rows' => 3, 'required' => 'required']) !!}
         </div>
         <div class="form-group">
             {!! Form::submit('Коментирай',

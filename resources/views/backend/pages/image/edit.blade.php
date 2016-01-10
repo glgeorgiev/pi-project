@@ -15,7 +15,8 @@
             </header>
             <div class="panel-body">
                 {!! Form::model($image, ['method' => 'PATCH', 'files' => true,
-                    'url' => route('admin.image.update', ['image' => $image])]) !!}
+                    'url' => route('admin.image.update', ['image' => $image]),
+                    'class' => 'image-form']) !!}
                     @include('backend.pages.image._form')
                 {!! Form::close() !!}
             </div>

@@ -54,6 +54,7 @@
 
 @section('footer_script')
     {!! HTML::script('assets/js/images.js') !!}
+    {!! HTML::script('assets/js/tinymce/tinymce.min.js') !!}
     <script>
         jQuery(function($) {
             $(':input[name="tag_list"]').tagsInput({
@@ -61,6 +62,32 @@
                 defaultText: '{{ trans('article.field.tags') }}',
                 minChars: 2
             });
+            $('.article-form').validate({
+                rules: {
+                    title: {
+                        required: true,
+                        maxlength: 255
+                    },
+                    slug: {
+                        required: true,
+                        maxlength: 255,
+                        remote: '{{ route('admin.validate.article.slug') }}'
+                    }
+                }
+            });
+        });
+        tinymce.init({
+            selector:'textarea[name="content"]',
+            plugins: 'charmap code fullscreen link paste spellchecker table',
+            toolbar: [
+                'bold italic | ' +
+                'alignleft aligncenter alignright | ' +
+                'bullist numlist blockquote | ' +
+                'cut copy paste pastetext undo redo | ' +
+                'link unlink charmap table spellchecker | ' +
+                'removeformat | ' +
+                'fullscreen code'
+            ]
         });
     </script>
 @endsection

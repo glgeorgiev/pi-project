@@ -58,22 +58,30 @@
         {!! Form::submit(trans('poll.create'),
         ['class' => 'btn btn-success col-sm-12']) !!}
     </div>
-
-    @section('footer_script')
-        <script>
-            jQuery(function($) {
-                $('body').on('click', '.poll-answer-remove', function() {
-                    var $this = $(this);
-                    if ($('.poll-answer').size() > 1) {
-                        $this.parents('.poll-answer').remove();
-                    }
-                }).on('click', '.poll-answer-add', function() {
-                    var $this = $(this);
-                    $this.parents('.poll-answer').after(
-                        $this.parents('.poll-answer').get(0).outerHTML
-                    );
-                });
-            });
-        </script>
-    @endsection
 @endif
+
+@section('footer_script')
+    <script>
+        jQuery(function($) {
+            $('body').on('click', '.poll-answer-remove', function() {
+                var $this = $(this);
+                if ($('.poll-answer').size() > 1) {
+                    $this.parents('.poll-answer').remove();
+                }
+            }).on('click', '.poll-answer-add', function() {
+                var $this = $(this);
+                $this.parents('.poll-answer').after(
+                        $this.parents('.poll-answer').get(0).outerHTML
+                );
+            });
+            $('.poll-form').validate({
+                rules: {
+                    title: {
+                        required: true,
+                        maxlength: 255
+                    }
+                }
+            });
+        });
+    </script>
+@endsection

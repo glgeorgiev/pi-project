@@ -15,7 +15,8 @@
             </header>
             <div class="panel-body">
                 {!! Form::model($user, ['method' => 'PATCH', 'files' => true,
-                    'url' => route('admin.user.update', ['user' => $user])]) !!}
+                    'url' => route('admin.user.update', ['user' => $user]),
+                    'class' => 'user-form']) !!}
                     @include('backend.pages.user._form')
                 {!! Form::close() !!}
             </div>

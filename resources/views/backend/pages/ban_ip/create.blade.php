@@ -15,7 +15,8 @@
             </header>
             <div class="panel-body">
                 {!! Form::open(['method' => 'POST', 'files' => true,
-                    'url' => route('admin.ban_ip.store')]) !!}
+                    'url' => route('admin.ban_ip.store'),
+                    'class' => 'ban_ip-form']) !!}
                     @include('backend.pages.ban_ip._form')
                 {!! Form::close() !!}
             </div>

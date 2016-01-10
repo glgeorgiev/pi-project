@@ -6,7 +6,8 @@
             <h1 class="main-heading">Регистрация</h1>
         </div>
         <div class="panel-body">
-            {!! Form::open(['method' => 'POST', 'files' => true]) !!}
+            {!! Form::open(['method' => 'POST', 'files' => true,
+            'class' => 'register-form']) !!}
             @if(Request::has('redirect_url'))
                 {!! Form::hidden('redirect_url',
                 Request::input('redirect_url')) !!}

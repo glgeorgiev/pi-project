@@ -6,7 +6,7 @@
             <h1 class="main-heading">Забравена парола</h1>
         </div>
         <div class="panel-body">
-            {!! Form::open(['method' => 'POST']) !!}
+            {!! Form::open(['method' => 'POST', 'class' => 'email-form']) !!}
 
             @include('frontend.partials.errors')
 

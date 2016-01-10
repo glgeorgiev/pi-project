@@ -6,7 +6,7 @@
             <h1 class="main-heading">Вход</h1>
         </div>
         <div class="panel-body">
-            {!! Form::open(['method' => 'POST']) !!}
+            {!! Form::open(['method' => 'POST', 'class' => 'login-form']) !!}
             {!! Form::hidden('remember', '1') !!}
             @if(Request::has('redirect_url'))
                 {!! Form::hidden('redirect_url',
