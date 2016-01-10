@@ -1,4 +1,12 @@
 jQuery(function($) {
+    $('input[type="file"]').fileinput({
+        showUpload: false,
+        previewFileType: ['image'],
+        allowedFileTypes: ['image'],
+        browseLabel: "Качи",
+        removeClass: "btn btn-danger",
+        removeLabel: "Премахни"
+    });
     $('.like-dislike-forms').find('form').on('submit', function(e) {
         e.preventDefault();
         var $this = $(this);

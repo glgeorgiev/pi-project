@@ -30,7 +30,7 @@ class AuthController extends FrontendController
     }
 
     protected $redirectPath = '/';
-    protected $redirectRoute = '/';
+    protected $redirectRoute = 'index';
 
     public function postRegister(Request $request)
     {

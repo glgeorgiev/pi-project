@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Helpers\Avatar;
 use DateTime;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -15,7 +16,7 @@ class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword;
+    use Authenticatable, Authorizable, CanResetPassword, Avatar;
 
     /**
      * The database table used by the model.

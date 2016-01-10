@@ -2,7 +2,7 @@ jQuery(function($) {
     $( ".datepicker" ).datepicker({
         dateFormat: 'yy-mm-dd'
     });
-    $('input[name="file"]').fileinput({
+    $('input[type="file"]').fileinput({
         showUpload: false,
         previewFileType: ['image'],
         allowedFileTypes: ['image'],

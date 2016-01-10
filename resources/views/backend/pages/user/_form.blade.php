@@ -31,6 +31,10 @@
     {!! Form::label('is_admin', trans('user.fields.is_admin')) !!}
 </div>
 
+<div class="form-group">
+    {!! Form::file('avatar') !!}
+</div>
+
 @if(isset($user))
     <div class="form-group">
         {!! Form::submit(trans('user.edit'),

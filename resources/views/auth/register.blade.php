@@ -6,7 +6,7 @@
             <h1 class="main-heading">Регистрация</h1>
         </div>
         <div class="panel-body">
-            {!! Form::open(['method' => 'POST']) !!}
+            {!! Form::open(['method' => 'POST', 'files' => true]) !!}
             @if(Request::has('redirect_url'))
                 {!! Form::hidden('redirect_url',
                 Request::input('redirect_url')) !!}
@@ -47,6 +47,14 @@
                 <div class="col-sm-9">
                     {!! Form::password('password_confirmation',
                     ['class' => 'form-control', 'required' => 'required']) !!}
+                </div>
+            </div>
+
+            <div class="form-group clearfix">
+                {!! Form::label('avatar', 'Аватар',
+                ['class' => 'col-sm-3 control-label text-right']) !!}
+                <div class="col-sm-9">
+                    {!! Form::file('avatar') !!}
                 </div>
             </div>
 
