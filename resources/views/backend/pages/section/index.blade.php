@@ -26,7 +26,7 @@
                                         {{ $section->title }}
                                     </div>
                                     <div class="col-sm-3">
-                                        {{ $section->url }}
+                                        {{ $section->slug }}
                                     </div>
                                     <div class="col-sm-3">
                                         {{ $section->updated_at->toRfc2822String() }}
