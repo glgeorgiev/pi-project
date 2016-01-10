@@ -45,7 +45,7 @@ class AuthController extends FrontendController
 
     public function postLogin(Request $request)
     {
-        $response = $this->traitPostRegister($request);
+        $response = $this->traitPostLogin($request);
 
         if (Auth::check() && $request->has('redirect_url')) {
             return redirect($request->input('redirect_url'));

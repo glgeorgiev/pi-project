@@ -14,57 +14,73 @@
                 <div class="clearfix"></div>
             </header>
             <div class="panel-body">
-                @include('backend.pages.menu._filter')
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>{{ trans('common.id') }}</th>
-                        <th>{{ trans('menu.fields.title') }}</th>
-                        <th>{{ trans('menu.fields.url') }}</th>
-                        <th>{{ trans('menu.fields.order') }}</th>
-                        <th>{{ trans('common.updated_at') }}</th>
-                        <th>{{ trans('common.options') }}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($menus as $menu)
-                        <tr>
-                            <td>{{ $menu->id }}</td>
-                            <td>{{ $menu->title }}</td>
-                            <td>{{ $menu->url }}</td>
-                            <td>{{ $menu->order }}</td>
-                            <td>{{ $menu->updated_at->toRfc2822String() }}</td>
-                            <td>
-                                <a class="btn btn-sm btn-info"
-                                    href="{{ route('admin.menu.show',
-                                    ['menu' => $menu->id]) }}">
-                                    <i class="fa fa-eye"></i>
-                                </a>
+                @if(count($menus))
+                    <ul class="sortable">
+                        @foreach($menus as $menu)
+                            <li data-menu_id="{{ $menu->id }}">
+                                <div class="col-sm-12">
+                                    <div class="col-sm-1">
+                                        {{ $menu->id }}
+                                    </div>
+                                    <div class="col-sm-3">
+                                        {{ $menu->title }}
+                                    </div>
+                                    <div class="col-sm-3">
+                                        {{ $menu->url }}
+                                    </div>
+                                    <div class="col-sm-3">
+                                        {{ $menu->updated_at->toRfc2822String() }}
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <a class="btn btn-sm btn-info"
+                                           href="{{ route('admin.menu.show',
+                                        ['menu' => $menu->id]) }}">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
 
-                                <a class="btn btn-sm btn-warning"
-                                    href="{{ route('admin.menu.edit',
-                                    ['menu' => $menu->id]) }}">
-                                    <i class="fa fa-edit"></i>
-                                </a>
+                                        <a class="btn btn-sm btn-warning"
+                                           href="{{ route('admin.menu.edit',
+                                        ['menu' => $menu->id]) }}">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
 
-                                <a class="btn btn-sm btn-danger"
-                                   href="#destroyModal" data-toggle="modal"
-                                   data-url="{{ route('admin.menu.destroy',
-                                    ['menu' => $menu->id]) }}"
-                                   data-text="{{ trans('common.destroy_menu',
-                                    ['id' => $menu->id, 'title' => $menu->title]) }}">
-                                    <i class="fa fa-trash-o"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-                <div class="text-center">
-                    {!! $menus->appends(Request::all())->render() !!}
-                </div>
+                                        <a class="btn btn-sm btn-danger"
+                                           href="#destroyModal" data-toggle="modal"
+                                           data-url="{{ route('admin.menu.destroy',
+                                        ['menu' => $menu->id]) }}"
+                                           data-text="{{ trans('common.destroy_menu',
+                                        ['id' => $menu->id, 'title' => $menu->title]) }}">
+                                            <i class="fa fa-trash-o"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <a href="javascript:void(0);" class="btn btn-success save-order">
+                        {{ trans('common.save_order') }}
+                    </a>
+                @endif
             </div>
         </section>
     </div>
     @include('backend.partials.modals.destroy')
+@endsection
+
+@section('footer_script')
+    <script>
+        jQuery(function($) {
+            $('.save-order').on('click', function() {
+                $.ajax({
+                    method: 'POST',
+                    url: '{{ route('admin.menu.order') }}',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        order: $( ".sortable" ).sortable('toArray', {attribute: 'data-menu_id'})
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

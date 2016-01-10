@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Request;
-
 class Section extends Model
 {
     protected $table = 'sections';
@@ -18,19 +16,5 @@ class Section extends Model
     public function articles()
     {
         return $this->hasMany(Article::class);
-    }
-
-    public static function getFilteredResults()
-    {
-        $query = static::order();
-
-        if (Request::has('id')) {
-            $query = $query->where('id', Request::input('id'));
-        }
-        if (Request::has('title')) {
-            $query = $query->where('title', 'like','%' . Request::input('title') . '%');
-        }
-
-        return $query->paginate(config('constants.per_page'));
     }
 }

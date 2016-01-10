@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Menu;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MenuRequest;
+use DB;
+use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
@@ -20,7 +22,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::getFilteredResults();
+        $menus = Menu::order()->get();
 
         return view('backend.pages.menu.index', compact('menus'));
     }
@@ -95,5 +97,36 @@ class MenuController extends Controller
         $menu->delete();
 
         return $this->redirect();
+    }
+
+    public function order(Request $request)
+    {
+        if (! $request->has('order') || ! is_array($request->input('order'))) {
+            return response()->json([
+                'result'    => 'error',
+                'message'   => 'Something really odd has happened',
+            ], 422);
+        }
+
+        $orderArray = $request->input('order');
+        $orderNumbers = array_keys($orderArray);
+        $orderIds = array_values($orderArray);
+        //we don't want the order to start from 0,
+        //we want it to start from 1,
+        //also make sure everyone is an integer
+        foreach ($orderNumbers as $key => $val) {
+            $orderNumbers[$key] = intval($val + 1);
+        }
+        //make sure everyone is an integer
+        foreach ($orderIds as $key => $val) {
+            $orderIds[$key] = intval($val);
+        }
+
+        DB::table('menus')->update([
+            'order' => DB::raw('ELT(FIELD(`id`, ' . implode(',', $orderIds) . '),
+                                ' . implode(',', $orderNumbers) . ')'),
+        ]);
+
+        return response()->json(['result' => 'success']);
     }
 }

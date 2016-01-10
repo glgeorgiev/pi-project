@@ -26,7 +26,9 @@ Route::group(['prefix' => 'password', 'middleware' => 'guest'], function() {
 
 //What admins can see
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function() {
-    Route::get('',                  ['as' => 'admin.index',   'uses' => 'Backend\IndexController@index']);
+    Route::get('',                  ['as' => 'admin.index',         'uses' => 'Backend\IndexController@index']);
+    Route::post('menu/order',       ['as' => 'admin.menu.order',    'uses' => 'Backend\MenuController@order']);
+    Route::post('section/order',    ['as' => 'admin.section.order', 'uses' => 'Backend\SectionController@order']);
 
     Route::resource('article',      'Backend\ArticleController');
     Route::resource('ban_user',     'Backend\BanUserController',    ['except'   => ['show', 'edit', 'update']]);

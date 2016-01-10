@@ -15,4 +15,5 @@ jQuery(function($) {
         $('#modal-text').text($this.attr('data-text'));
         $('#destroy-form').attr('action', $this.attr('data-url'));
     });
+    $('.sortable').sortable();
 });
