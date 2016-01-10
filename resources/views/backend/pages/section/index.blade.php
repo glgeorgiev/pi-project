@@ -58,6 +58,7 @@
                             </li>
                         @endforeach
                     </ul>
+                    <div class="ajax-result"></div>
                     <a href="javascript:void(0);" class="btn btn-success save-order">
                         {{ trans('common.save_order') }}
                     </a>
@@ -78,6 +79,14 @@
                     data: {
                         _token: '{{ csrf_token() }}',
                         order: $( ".sortable" ).sortable('toArray', {attribute: 'data-section_id'})
+                    },
+                    success: function() {
+                        $('.ajax-result').removeClass('alert-danger').addClass('alert alert-success')
+                                .text('Подредбата беше успешно запазена!');
+                    },
+                    error: function() {
+                        $('.ajax-result').removeClass('alert-success').addClass('alert alert-danger')
+                                .text('Възникна грешка! Подредбата не беше запазена!');
                     }
                 });
             });
