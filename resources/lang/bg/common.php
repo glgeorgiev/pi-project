@@ -19,4 +19,8 @@ return [
 
     'permanent_ban'     => 'Перманентен бан',
     'save_order'        => 'Запази подредбата',
+    'latest_articles'   => 'Последни статии',
+    'latest_comments'   => 'Последни коментари',
+    'author'            => 'Автор',
+    'section'           => 'Секция',
 ];

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Article;
+use App\Comment;
 use App\Http\Controllers\Controller;
 
 class IndexController extends Controller
@@ -11,6 +13,17 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('backend.pages.index');
+        $articles = Article::ordered()
+            ->limit(config('constants.dashboard_records'))
+            ->with(['section', 'image', 'user'])
+            ->get();
+
+        $comments = Comment::ordered()
+            ->limit(config('constants.dashboard_records'))
+            ->with(['user', 'article'])
+            ->get();
+
+        return view('backend.pages.index',
+            compact('articles', 'comments'));
     }
 }
