@@ -35,7 +35,7 @@
                     {{ $article->description }}
                 </div>
                 <div class="article-content">
-                    {{ $article->content }}
+                    {!! $article->content !!}
                 </div>
             </div>
             <div class="well col-sm-12">

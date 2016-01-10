@@ -3,7 +3,15 @@
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h1 class="main-heading">Профил</h1>
+            <h1 class="main-heading pull-left">Профил</h1>
+            @if(Auth::user()->avatar_ext)
+                {!! HTML::image(Auth::user()->avatar_url,
+                Auth::user()->email, ['class' => 'md-image pull-right']) !!}
+            @else
+                {!! HTML::image('assets/img/no-image.png',
+                Auth::user()->email, ['class' => 'md-image pull-right']) !!}
+            @endif
+            <div class="clearfix"></div>
         </div>
         <div class="panel-body">
             {!! Form::open(['method' => 'POST', 'files' => true]) !!}

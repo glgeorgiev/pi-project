@@ -19,7 +19,7 @@ trait Avatar
         return $this->getKey() . '.' . $this->getAttribute('avatar_ext');
     }
 
-    public function getUrlAttribute()
+    public function getAvatarUrlAttribute()
     {
         return asset(static::$filepath . '/' . $this->getFileName());
     }
@@ -36,10 +36,11 @@ trait Avatar
                 $model->uploadFile();
             }
         });
-        self::updated(function($model) {
-            if (Request::hasFile('avatar')) {
+        self::updating(function($model) {
+            if (Request::hasFile('avatar') &&
+                ! $model->wasRecentlyCreated) {
                 $model->deleteFile();
-                $model->uploadFile();
+                $model->uploadFile(true);
             }
         });
         self::deleting(function($model) {
@@ -47,7 +48,7 @@ trait Avatar
         });
     }
 
-    protected function uploadFile()
+    protected function uploadFile($updating = false)
     {
         $file = Request::file('avatar');
         if (! $file->isValid()) {
@@ -55,7 +56,9 @@ trait Avatar
         }
         $this->avatar_ext = $file->getClientOriginalExtension();
         $file->move($this->getFilePath(), $this->getFileName());
-        $this->save();
+        if ($updating === false) {
+            $this->save();
+        }
     }
 
     protected function deleteFile()

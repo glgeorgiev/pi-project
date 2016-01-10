@@ -37,6 +37,16 @@
 
 @if(isset($user))
     <div class="form-group">
+        @if($user->avatar_ext)
+            {!! HTML::image($user->avatar_url,
+            $user->email, ['class' => 'thumbnail col-sm-4']) !!}
+        @else
+            {!! HTML::image('assets/img/no-image.png',
+            $user->email, ['class' => 'thumbnail col-sm-4']) !!}
+        @endif
+    </div>
+
+    <div class="form-group">
         {!! Form::submit(trans('user.edit'),
         ['class' => 'btn btn-warning col-sm-12']) !!}
     </div>
