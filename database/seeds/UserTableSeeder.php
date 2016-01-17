@@ -14,9 +14,9 @@ class UserTableSeeder extends Seeder
         $now = new DateTime();
 
         DB::table('users')->insert([
-            'name'      => 'Georgi Georgiev',
-            'email'     => 'georgi.georgiev@delta.bg',
-            'password'  => bcrypt('tainaparola123'),
+            'name'      => 'Administrator',
+            'email'     => 'admin@example.org',
+            'password'  => bcrypt('4eFXMnnumKmZ'),
             'is_admin'  => true,
             'created_at'=> $now,
             'updated_at'=> $now,
