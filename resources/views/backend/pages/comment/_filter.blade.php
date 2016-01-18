@@ -19,7 +19,7 @@
         <div class="col-sm-2">
             {!! Form::text('before', Request::input('before'),
             ['class' => 'form-control datepicker',
-            'placeholder' => trans('common.after')]) !!}
+            'placeholder' => trans('common.before')]) !!}
         </div>
         <div class="col-sm-3">
             {!! Form::submit(trans('common.search'),

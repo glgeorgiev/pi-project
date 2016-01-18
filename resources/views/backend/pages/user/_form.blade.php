@@ -3,13 +3,13 @@
 <div class="form-group">
     {!! Form::text('name', null,
     ['class' => 'form-control', 'required' => 'required',
-    'placeholder' => trans('user.fields.title')]) !!}
+    'placeholder' => trans('user.fields.name')]) !!}
 </div>
 
 <div class="form-group">
     {!! Form::text('email', null,
     ['class' => 'form-control', 'required' => 'required',
-    'placeholder' => trans('user.fields.slug')]) !!}
+    'placeholder' => trans('user.fields.email')]) !!}
 </div>
 
 <div class="form-group">

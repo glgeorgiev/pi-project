@@ -19,8 +19,8 @@
                     <thead>
                     <tr>
                         <th>{{ trans('common.id') }}</th>
-                        <th>{{ trans('user.field.name') }}</th>
-                        <th>{{ trans('user.field.email') }}</th>
+                        <th>{{ trans('user.fields.name') }}</th>
+                        <th>{{ trans('user.fields.email') }}</th>
                         <th>{{ trans('ban_user.fields.until') }}</th>
                         <th>{{ trans('common.updated_at') }}</th>
                         <th>{{ trans('common.options') }}</th>
