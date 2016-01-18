@@ -1,19 +1,21 @@
 <div class="footer">
-    Копирайт текстс
-    <ul class="nav nav-pills nav-footer pull-right">
-        <li>
-            <a href="#">Едно</a>
-        </li>
-        <li>
-            <a href="#">Две</a>
-        </li>
-        <li>
-            <a href="#">Три</a>
-        </li>
-        <li>
-            <a href="#">Четири</a>
-        </li>
-    </ul>
+    2015 - {{ date('Y') }} &copy;
+    OpenSource Проект,
+    <a href="https://github.com/glgeorgiev/pi-project">код в GitHub</a>
+    {{--<ul class="nav nav-pills nav-footer pull-right">--}}
+        {{--<li>--}}
+            {{--<a href="#">Едно</a>--}}
+        {{--</li>--}}
+        {{--<li>--}}
+            {{--<a href="#">Две</a>--}}
+        {{--</li>--}}
+        {{--<li>--}}
+            {{--<a href="#">Три</a>--}}
+        {{--</li>--}}
+        {{--<li>--}}
+            {{--<a href="#">Четири</a>--}}
+        {{--</li>--}}
+    {{--</ul>--}}
     <div class="clearfix"></div>
 </div>
 
