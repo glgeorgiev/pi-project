@@ -22,7 +22,7 @@ class LanguageController extends Controller
     {
         $languages = Language::paginate(10);
 
-        return view('backend.languages.language.index', compact('languages'));
+        return view('backend.pages.language.index', compact('languages'));
     }
 
     /**
@@ -32,7 +32,7 @@ class LanguageController extends Controller
      */
     public function create()
     {
-        return view('backend.languages.language.create');
+        return view('backend.pages.language.create');
     }
 
     /**
