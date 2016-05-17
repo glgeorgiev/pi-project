@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use App\Language;
+use Exception;
 use Illuminate\Support\ServiceProvider;
+use Request;
+use View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +17,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if (Request::has('language')) {
+            $language = Language::find(Request::input('language'));
+        }
+
+        if (! isset($language)) {
+            $language = Language::first();
+        }
+
+        if (is_null($language)) {
+            throw new Exception('No language');
+        }
+
+        View::share('langauge', $language);
     }
 
     /**
