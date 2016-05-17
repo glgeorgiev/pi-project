@@ -21,7 +21,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        $pages = Page::all();
+        $pages = Page::paginate(10);
 
         return view('backend.pages.page.index', compact('pages'));
     }
