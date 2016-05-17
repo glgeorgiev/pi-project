@@ -31,6 +31,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::post('section/order',    ['as' => 'admin.section.order', 'uses' => 'Backend\SectionController@order']);
 
     Route::resource('article',      'Backend\ArticleController');
+    Route::resource('language',     'Backend\LanguageController');
+    Route::resource('page',         'Backend\PageController');
     Route::resource('ban_user',     'Backend\BanUserController',    ['except'   => ['show', 'edit', 'update']]);
     Route::resource('ban_ip',       'Backend\BanIpController',      ['except'   => ['show', 'edit', 'update']]);
     Route::resource('comment',      'Backend\CommentController',    ['only'     => ['index', 'update', 'destroy']]);

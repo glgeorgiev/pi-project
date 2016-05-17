@@ -35,6 +35,8 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('section',   \App\Section::class);
         $router->model('tag',       \App\Tag::class);
         $router->model('user',      \App\User::class);
+        $router->model('page',      \App\Page::class);
+        $router->model('language',  \App\Language::class);
 
         parent::boot($router);
     }
