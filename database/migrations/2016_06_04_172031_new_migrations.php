@@ -25,12 +25,12 @@ class NewMigrations extends Migration
                 SELECT COUNT(id) INTO @users_count FROM users WHERE is_admin = 1;
                 SET @i = 0;
                 WHILE @i < @users_count DO
-                    SELECT id INTO @id FROM users WHERE is_admin = 1 LIMIT @i,1;
+                    SELECT id INTO @id FROM users WHERE is_admin = 1 LIMIT 0,1;
                     CALL procedure_article_views_for_user(@id,@views_count);
-                    SELECT @views_count INTO OUTFILE CONCAT(\'/tmp/statistics_for_user_\', @id, \'.txt\');
+                    SELECT @views_count INTO OUTFILE \'/tmp/statistics.txt\');
                     SET @i = @i + 1;
-                END WHILE
-            END
+                END WHILE;
+            END;
         ');
     }
 
