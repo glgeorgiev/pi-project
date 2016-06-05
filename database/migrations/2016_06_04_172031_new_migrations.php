@@ -11,7 +11,7 @@ class NewMigrations extends Migration
      */
     public function up()
     {
-        DB::unprepared('CREATE VIEW view_articles AS SELECT articles.id, articles.title, sections.title,
+        DB::unprepared('CREATE VIEW view_articles AS SELECT articles.id, articles.title, sections.title AS section,
                         CONCAT(articles.slug,\'/\', sections.slug) AS slug, articles.description, articles.content
                         FROM articles JOIN sections ON sections.id = articles.section_id');
 
