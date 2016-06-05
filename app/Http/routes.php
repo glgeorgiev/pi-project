@@ -57,6 +57,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
 
 //What every user can see
 Route::get('',                              ['as' => 'index',   'uses' => 'Frontend\IndexController@index']);
+Route::get('rss',                           ['as' => 'rss',     'uses' => 'Frontend\RssController@index']);
 Route::get('polls',                         ['as' => 'polls',   'uses' => 'Frontend\PollController@index']);
 //TODO: custom pages, like polls, example contacts, for us
 Route::get('tag/{tag_slug}',                ['as' => 'tag',     'uses' => 'Frontend\TagController@index']);
