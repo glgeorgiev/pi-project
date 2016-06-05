@@ -44,7 +44,7 @@ class RssController extends FrontendController
             $xml->writeAttribute('isPermaLink', 'false');
             $xml->writeCdata('pi.demos.maniaci.net-' . $article->id);
             $xml->endElement();
-            $xml->writeElement('link', $article->slug);
+            $xml->writeElement('link', url($article->slug));
 
             $xml->writeElement('description', $article->description);
 
