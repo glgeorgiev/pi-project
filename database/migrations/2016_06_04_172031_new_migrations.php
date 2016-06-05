@@ -11,7 +11,9 @@ class NewMigrations extends Migration
      */
     public function up()
     {
-        DB::unprepared('CREATE VIEW view_articles AS SELECT id, title, slug, description, content FROM articles');
+        DB::unprepared('CREATE VIEW view_articles AS SELECT articles.id, articles.title, sections.title,
+                        CONCAT(articles.slug,\'/\', sections.slug) AS slug, articles.description, articles.content
+                        FROM articles JOIN sections ON sections.id = articles.section_id');
 
         DB::unprepared('CREATE TRIGGER trigger_articles BEFORE UPDATE ON articles FOR EACH ROW SET NEW.updated_at = NOW()');
 
@@ -22,14 +24,8 @@ class NewMigrations extends Migration
             CREATE EVENT event_statistics
             ON SCHEDULE EVERY 1 WEEK STARTS \'2016-06-05 04:00:00\'
             DO BEGIN
-                SELECT COUNT(id) INTO @users_count FROM users WHERE is_admin = 1;
-                SET @i = 0;
-                WHILE @i < @users_count DO
-                    SELECT id INTO @id FROM users WHERE is_admin = 1 LIMIT 0,1;
-                    CALL procedure_article_views_for_user(@id,@views_count);
-                    SELECT @views_count INTO OUTFILE \'/tmp/statistics.txt\';
-                    SET @i = @i + 1;
-                END WHILE;
+                CALL procedure_article_views_for_user(1,@views_count);
+                SELECT @views_count INTO OUTFILE \'/tmp/statistics.txt\';
             END;
         ');
     }
