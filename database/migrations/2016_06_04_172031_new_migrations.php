@@ -12,7 +12,7 @@ class NewMigrations extends Migration
     public function up()
     {
         DB::unprepared('CREATE VIEW view_articles AS SELECT articles.id, articles.title, sections.title AS section,
-                        CONCAT(articles.slug,\'/\', sections.slug) AS slug, articles.description, articles.content
+                        CONCAT(sections.slug,\'/\', articles.slug) AS slug, articles.description, articles.content
                         FROM articles JOIN sections ON sections.id = articles.section_id');
 
         DB::unprepared('CREATE TRIGGER trigger_articles BEFORE UPDATE ON articles FOR EACH ROW SET NEW.updated_at = NOW()');
